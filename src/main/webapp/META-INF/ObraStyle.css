@@ -1,0 +1,135 @@
+body
+{
+    background-color: #fae8a0;
+}
+.rect1{
+    position: absolute;
+    top: 25%;
+    right: 4%;
+    width: 20%; 
+    height: 50%;
+    border-radius: 2%;
+    background:#edbc5c;
+    z-index: -9;
+}
+.FotoAutor{
+    position: absolute;
+    top: 27%;
+    right:5%;
+    width: 18%; 
+    z-index: -8;
+    border-radius: 2%;
+}
+.NombreAutor{
+    position: absolute;
+    top: 72%;
+    left:76%;
+    font-family:  'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
+.Obra1{
+    position: absolute;
+    top: 27%;
+    left: 3%;
+    height: 45%;
+}
+#encabezado
+{
+    width: calc(100%);
+    height: fit-content;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+.NombreObra{
+    position: absolute;
+    top: 25%;
+    left:35%;
+    font-family:  'Playfair Display', serif;
+    font-size: 45px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
+.rect4{
+    position: absolute;
+    top: 42%;
+    left: 27%;
+    width: 40%; 
+    height: 0.5%;
+    background:#380101;
+    z-index: -9;
+}
+.PrecioDeSalida{
+    position: absolute;
+    top: 40%;
+    left:28%;
+    font-family:  'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
+.PrecioSubasta{
+    position: absolute;
+    top: 55%;
+    left:28%;
+    font-family:  'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
+.ValorActual{
+    position: absolute;
+    top: 70%;
+    left:13%;
+    font-family:  'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
+.BotonPuja{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    height: 7%;
+    font-size: 35px;
+}
+.TiempoRestante{
+    position: absolute;
+    top: 90%;
+    left:40%;
+    font-family:  'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+    z-index: -8;
+}
