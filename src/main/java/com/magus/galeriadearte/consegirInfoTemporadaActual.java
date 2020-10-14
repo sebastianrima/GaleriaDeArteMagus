@@ -37,10 +37,9 @@ public class consegirInfoTemporadaActual extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/yyyy");  
-            LocalDateTime now = LocalDateTime.now();  
-            out.println(dtf.format(now));  
-            out.println("SELECT * FROM `temporada` WHERE fecha = " + dtf.format(now) );
+            DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM"); 
+            DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
+            out.println("SELECT * FROM `temporada` WHERE month(fecha) = " + mes + " and year(fecha) =  " + año) ;
         }
     }
 

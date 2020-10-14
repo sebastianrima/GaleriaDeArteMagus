@@ -6,7 +6,6 @@ xhttp.onreadystatechange = function ()
     {
         alert(this.responseText);
         location='/main.html';
-        locationf="/main.html";
     }
 }
 function guardarCliente()
