@@ -1,0 +1,55 @@
+footer
+{
+    margin-top: 60px;
+    height: 300px;
+    background-color: #d99c2b;
+    text-align:center;
+}
+.cajaEnFooter
+{
+    margin-top: 30px;
+    width: max-content;
+    max-width: 300px;
+}
+#seccionesPaginaFooter
+{
+    display:inline-block;
+
+}
+#TextoFooter
+{
+    float: right;
+    margin-right: 30px;
+    color: #380101;
+    font-size: 1em;
+    width: 400px;
+}
+#informacionFooter
+{
+    float: left;
+    margin-left: 30px;
+
+}
+
+#tituloFooder
+{
+    font-size: 2em;
+    font-family:  'Playfair Display', serif;
+
+}
+
+#seccionesPagina
+{
+    list-style: none;
+    font-size: 1.2em;
+
+}
+a
+{
+    text-decoration: none;
+    color: #380101;
+}
+a:hover
+{
+    color: white;
+}
