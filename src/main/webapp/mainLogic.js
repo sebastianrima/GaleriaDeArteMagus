@@ -3,8 +3,14 @@ var xhttp = new XMLHttpRequest();
 
 window.onload = function() {
     requestTemporada();
-    
+    getUser();
 };
+function getUser()
+{
+    var url = new URL(window.location.href);
+    var nombre = url.searchParams.get("n");
+    document.getElementById("welcomeText").innerHTML = "Bienvenido "+nombre;
+}
 function requestTemporada()
 {
     xhttp.open("GET", "consegirInfoTemporadaActual", true);
@@ -14,10 +20,7 @@ function requestTemporada()
     
 function mostrarDatos(respuesta)
 {
-    var datosSeparadosTemporada = respuesta.split("ñ");
-    for (var i=0; i < datosSeparadosTemporada.length; i++) {
-      alert(datosSeparadosTemporada[i]);
-   }
+   var datosSeparadosTemporada = respuesta.split("ñ"); 
    var titulo= datosSeparadosTemporada[0];
    var img1 = datosSeparadosTemporada[1];
    var img2 = datosSeparadosTemporada[2];
