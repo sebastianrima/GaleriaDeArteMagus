@@ -7,6 +7,9 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +37,9 @@ public class consegirInfoTemporadaActual extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");  
+        LocalDateTime now = LocalDateTime.now();  
+            out.println(dtf.format(now));  
             out.println("la Temporada es: nada");
         }
     }
