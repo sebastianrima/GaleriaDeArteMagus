@@ -1,0 +1,226 @@
+body {
+    background-color: #edbc5c;
+}
+
+#encabezado {
+    width: calc(100%);
+    height: fit-content;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+
+#divh1 {
+    background-color: #FEF9E6;
+    margin-top: 2%;
+    height: 70px;
+    width: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: #380101 4px solid;
+}
+
+h1 {
+    padding-top: 30px;
+    color: #380101;
+    font-family: 'Piedra', cursive;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 0;
+    text-align: center;
+    margin-top: 0;
+    height: 70px;
+    vertical-align: middle;
+}
+
+#imagenPred {
+    width: 450px;
+    height: 300px;
+    margin-top: 180px;
+    margin-left: 50px;
+    position: relative;
+}
+
+#imagenPred2 {
+    width: 450px;
+    height: 300px;
+    margin-top: 130px;
+    margin-left: 120px;
+    position: relative;
+}
+
+#whiteDiv {
+    position: absolute;
+    left: 620px;
+    top: 380px;
+    background-color: #f7e9ba;
+    float: right;
+    right: 50px;
+    border: #380101 4px solid;
+    height: 900px;
+}
+
+#nombreText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#descripcionText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#autorText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#fechaText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#precioText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#obraTipoText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#colorText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#emocionText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#tematicaText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#movimientoText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+input {
+    width: 90%;
+    display: block;
+    font-size: 14pt;
+    line-height: 15pt * 2;
+    font-family: 'Fjalla One';
+    margin-bottom: 14pt * 2;
+    border: none;
+    margin-left: 50px;
+    margin-right: 5px;
+    border-bottom: 5px solid #c08c25;
+    background: #f8f4e5;
+    min-width: 250px;
+    padding-left: 5px;
+    outline: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+select {
+    width: 90%;
+    display: block;
+    font-size: 15pt;
+    line-height: 15pt * 2;
+    font-family: 'Fjalla One';
+    margin-bottom: 14pt * 2;
+    border: none;
+    margin-left: 50px;
+    margin-right: 5px;
+    border-bottom: 5px solid #c08c25;
+    background: #f8f4e5;
+    min-width: 250px;
+    padding-left: 5px;
+    outline: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+textarea {
+    resize: none;
+    width: 90%;
+    display: block;
+    font-size: 14pt;
+    line-height: 15pt * 2;
+    font-family: 'Fjalla One';
+    margin-bottom: 14pt * 2;
+    border: none;
+    margin-left: 50px;
+    margin-right: 5px;
+    border-bottom: 5px solid #c08c25;
+    background: #f8f4e5;
+    min-width: 250px;
+    padding-left: 5px;
+    outline: none;
+    color: rgba(0, 0, 0, 1);
+}
+
+#createObraButton {
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+    line-height: 14pt * 2;
+    padding: 0 20px;
+    background: #fff3ae;
+    letter-spacing: 2px;
+    transition: .2s all ease-in-out;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 3px 3px 1px #645203, 3px 3px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#createObraButton:hover {
+    background: rgb(27, 16, 1);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
+input:focus {
+    border-bottom: 5px solid #300404;
+}
+
+textarea:focus {
+    border-bottom: 5px solid #300404;
+}
+
+select:focus {
+    border-bottom: 5px solid #300404;
+}
+
+#footer {
+    margin-top: 12%;
+    width: 100%;
+    height: 400px;
+}
