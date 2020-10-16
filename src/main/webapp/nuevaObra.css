@@ -190,7 +190,7 @@ textarea {
     height: 50px;
     display: block;
     margin: 0 auto;
-    line-height: 14pt * 2;
+    line-height: 14pt * 2pt;
     padding: 0 20px;
     background: #fff3ae;
     letter-spacing: 2px;

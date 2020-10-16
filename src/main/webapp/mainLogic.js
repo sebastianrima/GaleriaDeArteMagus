@@ -9,13 +9,13 @@ function getUser()
 {
     var url = new URL(window.location.href);
     var nombre = url.searchParams.get("n");
-    document.getElementById("welcomeText").innerHTML = "Bienvenido "+nombre;
+    if (nombre !== null)
+        document.getElementById("welcomeText").innerHTML = "Bienvenido "+nombre;
 }
 function requestTemporada()
 {
     xhttp.open("GET", "consegirInfoTemporadaActual", true);
     xhttp.send();
-    
 }
     
 function mostrarDatos(respuesta)
@@ -37,4 +37,8 @@ xhttp.onreadystatechange = function ()
     {
         mostrarDatos(this.responseText); 
     }
+}
+function  goToLogIn()
+{
+    location='/index.html' ;
 }
