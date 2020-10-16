@@ -1,0 +1,99 @@
+body
+{
+    background-color: #edbc5c;
+}
+#subasta
+{
+    text-align:center;
+}
+#encabezado
+{
+    width: calc(100%);
+    height: fit-content;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+#espacioObra1{
+
+    border-radius: 10px 10px 10px 10px;
+    background-color: #FEF9E6;
+    margin-left: 100px;
+    float: left;
+    padding-bottom: 50px;
+
+}
+
+#espacioObra3{
+    border-radius: 10px 10px 10px 10px;
+    background-color: #FEF9E6;
+    margin-right: 100px;
+    float: right;
+    padding-bottom: 50px;
+}
+#espacioObra2 {
+    border-radius: 10px 10px 10px 10px;
+    background-color: #FEF9E6;
+    max-width: 500px;
+    display:inline-block;
+    padding-bottom: 50px;
+}
+p
+{
+    max-width: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+img
+{
+    width: 200px;
+    height: 300px;
+}
+
+#footer
+{
+    width: 100%;
+    height: 400px;
+}
+h1
+{
+    padding-top: 30px;
+    color: #380101;
+    font-family:  'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    text-align: center;
+}
+.precio
+{
+    font-family: 'Playfair Display', serif;
+}
+.clickable{
+    color: white;
+    cursor: pointer;
+    background-color: #380101;
+    padding: 10px;
+    font-family:  Serif ;
+    font-size: 1em;
+    font-weight: bold;
+    font-style: italic;
+}
+.clickable:hover
+{
+    transform: scale(1.1);
+}
+
+.sombra
+{
+    margin-top: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    -webkit-box-shadow: -15px -11px 5px 0px #97671C;
+    -moz-box-shadow: -15px -11px 5px 0px #97671C;
+    box-shadow: -15px -11px 5px 0px #97671C;
+}
+
+
+
