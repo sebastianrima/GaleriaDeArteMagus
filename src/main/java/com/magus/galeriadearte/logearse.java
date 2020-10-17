@@ -7,6 +7,13 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,11 +43,25 @@ public class logearse extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String data = request.getParameter("data");
             String campos[] = data.split(",");
-            String contraseñaReal="123";
-            String nombre="";
-            String sqlCode = "SELECT * FROM clientes WHERE usuario = \"";
-            sqlCode+=campos[0]+"\";";
-            nombre ="isaac";
+            String contraseñaReal="admin";
+            String nombre="admin";
+            String sqlCode = "SELECT * FROM clientes WHERE usuario = \""+campos[0]+"\";";
+            
+            
+            myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+           
+         
+            
+            
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            
+            while (resultadoConsulta.next()) {
+               nombre = resultadoConsulta.getString(3);
+               contraseñaReal= resultadoConsulta.getString(5);
+            }
+            
             if (campos[1].equals(contraseñaReal)) {
                 out.print(nombre);
             }
@@ -48,7 +69,9 @@ public class logearse extends HttpServlet {
             {
                 out.print("false");
             }
-            
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(logearse.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
