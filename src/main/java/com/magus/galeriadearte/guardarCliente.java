@@ -6,8 +6,15 @@ package com.magus.galeriadearte;
  * and open the template in the editor.
  */
 
+import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,14 +44,27 @@ public class guardarCliente extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String data = request.getParameter("data");
             String campos[] = data.split(",");
+            String sqlCode = "INSERT INTO clientes(nombre,usuario,contraseña,correo,telefono) VALUES(";
+            myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
             
-            String sqlCode = "INSERT INTO usuarios(nombre,user,pass,correo,telefono) VALUES("; 
+            
             for (int i=0 ; i<campos.length-1;i++){
                 sqlCode+="\""+campos[i]+"\",";
             }
             sqlCode+= "\""+campos[campos.length-1]+"\");";
+            stmt.executeUpdate(sqlCode);
             out.print(sqlCode);
-         
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(guardarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            PrintWriter out = response.getWriter();
+            out.print(ex);
+        }catch(IOError e)
+        {
+            PrintWriter out = response.getWriter();
+            out.print(e);
         }
     }
 
