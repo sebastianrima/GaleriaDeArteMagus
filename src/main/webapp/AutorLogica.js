@@ -1,12 +1,42 @@
 var xhttp = new XMLHttpRequest();
-window.onload = Inicio;
-function Inicio()
+
+window.onload = function() {
+    myInfo="";
+    requestSubastaActual();
+};
+
+xhttp.onreadystatechange = function ()
 {
-    alert("!");
-    document.getElementById("NombreObra").innerHTML= "La Monalisa";
-    document.getElementById("NombreAutor").innerHTML= "Nikolaos de Esparta";
-    document.getElementById("PrecioDeSalida").innerHTML= "Precio de salida: "+ "50$";
-    document.getElementById("PrecioSubasta").innerHTML= "Precio de subasta: "+"50$";
-    document.getElementById("ValorActual").innerHTML= "Valor actual: "+ "50$";
-    document.getElementById("TiempoRestante").innerHTML= "1"+ "H restante";
+    if (this.readyState === 4 && this.status === 200)
+    {
+        Inicio(this.responseText); 
+    }
+}
+
+function Inicio(respuesta)
+{
+    var Separados= respuesta.split(",");
+    var NombreObra=Separados[0];
+    var imgObra= Separados[1];
+    var imgAutor= Separados[2]
+    var NombreAutor= Separados[3];
+    var PrecioDeSalida= Separados[4];
+    var PrecioSubasta=Separados[5];
+    var ValorActual=Separados[6];
+    var TiempoRestante=Separados[7];
+
+    document.getElementById("NombreObra").innerHTML= NombreObra;
+    document.getElementById("NombreAutor").innerHTML= NombreAutor;
+    document.getElementById("imgObra").innerHTML= imgObra;
+    document.getElementById("imgAutor").innerHTML= imgAutor;
+    document.getElementById("PrecioDeSalida").innerHTML= "Precio de salida: "+ PrecioDeSalida;
+    document.getElementById("PrecioSubasta").innerHTML= "Precio de subasta: "+PrecioSubasta;
+    document.getElementById("ValorActual").innerHTML= "Valor actual: "+ ValorActual;
+    document.getElementById("TiempoRestante").innerHTML= TiempoRestante+ "H restante";
+}
+
+function requestSubastaActual()
+{
+    xhttp.open("GET", "AutorServlet?data="+myInfo, true);
+    xhttp.send();
 }

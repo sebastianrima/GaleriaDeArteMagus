@@ -5,8 +5,16 @@
  */
 package com.magus.galeriadearte;
 
+import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author USER
  */
 @WebServlet(name = "ObraServlet", urlPatterns = {"/ObraServlet"})
-public class ObraServlet extends HttpServlet {
+public class obraServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +41,27 @@ public class ObraServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ObraServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ObraServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String data = request.getParameter("data");
+            String campos[] = data.split(",");
+            String sqlCode="";
+            String NombreObra,imgObra,imgAutor,NombreAutor,PrecioDeSalida,PrecioSubasta,ValorActual,TiempoRestante,respuesta;
+            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo ="+campos[0];
+            
+            
+            
+            
+            
+            NombreObra="La Monalisa"; 
+            imgObra="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg/368px-Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg";
+            NombreAutor="Nicolaos de Esparta";
+            imgAutor="/PerfilAutor.png";
+            PrecioDeSalida="10$";
+            PrecioSubasta="900000$";
+            ValorActual="2$";
+            TiempoRestante="5H";
+            
+            respuesta= NombreObra+","+imgObra+","+NombreAutor+","+imgAutor+","+PrecioDeSalida+","+PrecioSubasta+","+ValorActual+","+TiempoRestante;
+            out.println(respuesta);
         }
     }
 
