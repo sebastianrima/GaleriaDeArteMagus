@@ -2,8 +2,7 @@ body {
     background-color: #edbc5c;
 }
 
-img
-{
+img {
     width: 200px;
     height: 300px;
 }
@@ -32,7 +31,7 @@ h1 {
     line-height: 70px;
 }
 
-h2{
+h2 {
     font-family: Serif;
     color: #380101;
     text-align: left;
@@ -41,7 +40,7 @@ h2{
     vertical-align: middle;
 }
 
-h3{
+h3 {
     font-family: Serif;
     color: #380101;
     text-align: left;
@@ -49,10 +48,9 @@ h3{
     font-size: 32px;
     vertical-align: middle;
     line-height: 15px;
-
 }
 
-h4{
+h4 {
     font-family: Serif;
     color: #380101;
     text-align: left;
@@ -73,11 +71,12 @@ h4{
     margin-top: 4%;
 }
 
-img{
+img {
     width: 150px;
     height: 150px;
 }
-.numero{
+
+.numero {
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -86,7 +85,7 @@ img{
     text-align: center;
 }
 
-#fotoAutor{
+#fotoAutor {
     margin-left: 13%;
     margin-top: 2%;
     margin-bottom: 1%;
@@ -99,9 +98,9 @@ img{
     margin-bottom: 4px;
     height: 180px;
     margin-left: 25%;
-  }
+}
 
-.nombre{
+.nombre {
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -110,10 +109,9 @@ img{
     line-height: 135px;
     text-align: center;
     cursor: pointer;
-
 }
 
-.obrasNum{
+.obrasNum {
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -123,7 +121,7 @@ img{
     text-align: center;
 }
 
-.obrasFav{
+.obrasFav {
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -135,11 +133,16 @@ img{
     cursor: pointer;
 }
 
-#segundoDiv{
+#segundoDiv {
     margin-top: 5%;
 }
 
-#tercerDiv{
+#tercerDiv {
     margin-top: 5%;
+}
 
+#footer {
+    margin-top: 10%;
+    width: 100%;
+    height: 400px;
 }
