@@ -47,3 +47,11 @@ function goToSubastas()
 {
     location='/subastaActual.html' ;
 }
+function goToTopArtista()
+{
+    location='/topArtistas.html' ;
+}
+function goToArtistaTemporada()
+{
+    location='/Autor.html' ;
+}
