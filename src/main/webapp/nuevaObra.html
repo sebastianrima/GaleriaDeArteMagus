@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="nuevaObra.css">
     <link href="https://fonts.googleapis.com/css2?family=Piedra&family=Staatliches&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+    <script src="nuevaObraLogic.js"></script>
 
 </head>
 
@@ -23,24 +24,19 @@
         <img id="imagenPred2" src="Imagenes/emptyFrame2.jpg">
     </div>
     <div id="whiteDiv">
-        <p id="nombreText">Título obra<input type="text" name="nombre" size="40" placeholder="Escriba aquí"> </p>
-        <p id="descripcionText">Descripción<textarea type="text" name="descripción" size="40" placeholder="Escriba aquí"
+        <p id="nombreText">Título obra<input type="text" id="nombreText1" name="nombre" size="40" placeholder="Escriba aquí"> </p>
+        <p id="descripcionText">Descripción<textarea type="text" id="descripcionText1" name="descripción" size="40" placeholder="Escriba aquí"
                 rows="4"></textarea></p>
-        <p id="autorText">Autor de la obra<select type="text" name="autor">
-                <option value="" selected disabled hidden>Escoger</option>
-                <option value="Nico">Nico Picasso</option>
-                <option value="Magus">Captain Magus</option>
-            </select></p>
+        <p id="precioText">Precio Base<input type="text" id="precioText1" name="precio" size="40" placeholder="Escriba aquí"> </p>
         <p id="fechaText">Fecha de creación<input type="date" name="fecha" size="40"></p>
-        <p id="precioText">Precio Base<input type="text" name="precio" size="40" placeholder="Escriba aquí"> </p>
-        <p id="obraTipoText">Tipo de obra<select type="text" name="obraTipo">
+        <p id="obraTipoText">Tipo de obra<select type="text" id="TipoSelector" name="obraTipo">
                 <option value="" selected disabled hidden>Escoger</option>
                 <option value="0">Pintura</option>
                 <option value="1">Escultura</option>
             </select></p>
-        <p id="colorText">Color predominante<select type="text" name="obraTipo">
+        <p id="colorText">Color predominante<select type="text" id="colorSelect" name="obraTipo">
                 <option value="" selected disabled hidden>Escoger</option>
-                <option value="0">Blancoa</option>
+                <option value="0">Blanco</option>
                 <option value="1">Gris</option>
                 <option value="2">Negro</option>
                 <option value="3">Azul</option>
@@ -52,18 +48,24 @@
                 <option value="9">Morado</option>
                 <option value="10">Amarillo</option>
             </select></p>
-        <p id="emocionText">Emoción que describe<input type="text" name="emocion" size="40" placeholder="Escriba aquí">
+        <p id="emocionText">Emoción que describe<input type="text" id="emocionText1" name="emocion" size="40" placeholder="Escriba aquí">
         </p>
-        <p id="tematicaText">Temática<input type="text" name="tematica" size="40" placeholder="Escriba aquí"> </p>
-        <p id="movimientoText">Movimiento artístico<input type="text" name="Movimiento" size="40"
+        <p id="tematicaText">Temática<input type="text"id="tematicaText1"  name="tematica" size="40" placeholder="Escriba aquí"> </p>
+        <p id="movimientoText">Movimiento artístico<input type="text" id="movimientoText1" name="Movimiento" size="40"
                 placeholder="Escriba aquí"> </p>
-        <p><input type="button" name="sendbuton" size="40" value="Guardar Obra" class="centrado" id="createObraButton">
+        <p id="urlText">URL imágen<input type="text" id="urlText1" name="imagen" size="40" placeholder="Pegue aquí el link"> </p>
+        <p id="autorText">Autor de la obra<select type="text" id="autorSelect" name="autor">
+                <option value="" selected disabled hidden>Escoger</option>
+                <option value="Nico">Nico Picasso</option>
+                <option value="Magus">Captain Magus</option>
+            </select></p>
+        <p><input type="button" name="sendbuton" size="40" value="Guardar Obra" class="centrado" id="createObraButton" onclick="guardarObra()">
         </p>
     </div>
     <footer>
         <iframe id="footer" src="footer.html" frameBorder="0"></iframe>
     </footer>
-    
+
 </body>
 
 </html>

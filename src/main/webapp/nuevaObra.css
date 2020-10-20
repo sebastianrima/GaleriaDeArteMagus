@@ -58,7 +58,7 @@ h1 {
     float: right;
     right: 50px;
     border: #380101 4px solid;
-    height: 900px;
+    height: 980px;
 }
 
 #nombreText {
@@ -125,6 +125,13 @@ h1 {
 }
 
 #movimientoText {
+    margin-left: 10px;
+    font-size: 14pt;
+    line-height: 14pt * 2;
+    font-family: 'Fjalla One';
+}
+
+#urlText {
     margin-left: 10px;
     font-size: 14pt;
     line-height: 14pt * 2;

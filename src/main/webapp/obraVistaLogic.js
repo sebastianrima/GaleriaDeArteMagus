@@ -18,7 +18,7 @@ function requestObraInfo() {
 
 function mostrarDatos(respuesta) {
     var datosSeparados = respuesta.split("ñ");
-    var tituloObra = datosSeparados[1];
+    var tituloObra = datosSeparados[0];
     var descripcion = datosSeparados[1];
     var precioBaseObra = datosSeparados[2];
     var fechaCreacion = datosSeparados[3];
