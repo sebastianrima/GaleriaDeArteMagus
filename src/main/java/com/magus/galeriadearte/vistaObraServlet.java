@@ -8,6 +8,12 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,26 +38,54 @@ public class vistaObraServlet extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            String codigo="4";
+            String codigoArtista="1";
             String sqlCode="";
-            String tituloObra, descripcion, precioBaseObra, fechaCreacion, tipo, color, emocion, tematica, movimiento, obraPicture, respuesta;
-            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo = ";
+            String nombreArtista="";
+            String tituloObra = null, descripcion = null, precioBaseObra = null, fechaCreacion = null, tipo = null, color = null, emocion = null, tematica = null, movimiento = null, obraPicture = null, respuesta;
+            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo = " + codigo;
 
-            tituloObra="";
-            descripcion="";
-            precioBaseObra="";
-            fechaCreacion="";
-            tipo="";
-            color="";
-            emocion="";
-            tematica="";
-            movimiento="";
-            obraPicture="";
+            
+            
+            
+            
+             myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+            movimiento=" ";
+            
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            
+            while (resultadoConsulta.next()) {
+                tituloObra = resultadoConsulta.getString(2);  
+                precioBaseObra = resultadoConsulta.getString(3);
+                obraPicture = resultadoConsulta.getString(4);
+                fechaCreacion = resultadoConsulta.getString(5);
+                tipo = resultadoConsulta.getString(6);
+                color=resultadoConsulta.getString(7);
+                emocion=resultadoConsulta.getString(8);
+                tematica=resultadoConsulta.getString(9);
+                movimiento=resultadoConsulta.getString(10);
+                descripcion = resultadoConsulta.getString(11);
+                
+            }
+            ResultSet resultadoConsulta2 = stmt.executeQuery("SELECT nombre FROM artista WHERE artista.codigoArtista="+codigoArtista);
+            
+            while (resultadoConsulta2.next()) {
+                nombreArtista=resultadoConsulta2.getString(1);
+            }
+           
+            
+            
+            
 
             respuesta = tituloObra +"ñ"+ descripcion +"ñ"+ precioBaseObra +"ñ"+ 
             fechaCreacion +"ñ"+ tipo +"ñ"+ color +"ñ"+ emocion +"ñ"+ 
-            tematica +"ñ"+ movimiento +"ñ"+ obraPicture;
-
+            tematica +"ñ"+ movimiento +"ñ"+ obraPicture+"ñ"+ nombreArtista;
+            con.close();
             out.println(respuesta) ;
+        } catch (SQLException ex) {
+            Logger.getLogger(vistaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
 

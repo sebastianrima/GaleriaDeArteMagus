@@ -60,6 +60,7 @@ public class logearse extends HttpServlet {
             while (resultadoConsulta.next()) {
                nombre = resultadoConsulta.getString(3);
                contraseñaReal= resultadoConsulta.getString(5);
+               
             }
             
             if (campos[1].equals(contraseñaReal)) {

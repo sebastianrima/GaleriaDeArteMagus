@@ -6,7 +6,7 @@ function  goToNuevaObra()
     nombre = url.searchParams.get("n");
     user= url.searchParams.get("u");
 
-    top.window.location="/nuevaObra.html?u="+user +"&n="+nombre;
+    top.window.location="/index.html?u="+user +"&n="+nombre;
 }
 function  goToObras()
 {

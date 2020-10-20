@@ -64,7 +64,7 @@ h1 {
 #nombreText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
@@ -78,63 +78,63 @@ h1 {
 #autorText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #fechaText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #precioText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #obraTipoText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #colorText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #emocionText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #tematicaText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #movimientoText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
 #urlText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt ;
     font-family: 'Fjalla One';
 }
 
@@ -142,9 +142,9 @@ input {
     width: 90%;
     display: block;
     font-size: 14pt;
-    line-height: 15pt * 2;
+    line-height: 15pt ;
     font-family: 'Fjalla One';
-    margin-bottom: 14pt * 2;
+    margin-bottom: 14pt ;
     border: none;
     margin-left: 50px;
     margin-right: 5px;
@@ -162,7 +162,7 @@ select {
     font-size: 15pt;
     line-height: 15pt * 2;
     font-family: 'Fjalla One';
-    margin-bottom: 14pt * 2;
+    margin-bottom: 14pt ;
     border: none;
     margin-left: 50px;
     margin-right: 5px;
@@ -181,7 +181,7 @@ textarea {
     font-size: 14pt;
     line-height: 15pt * 2;
     font-family: 'Fjalla One';
-    margin-bottom: 14pt * 2;
+    margin-bottom: 14pt ;
     border: none;
     margin-left: 50px;
     margin-right: 5px;
@@ -197,7 +197,7 @@ textarea {
     height: 50px;
     display: block;
     margin: 0 auto;
-    line-height: 14pt * 2pt;
+    line-height: 14pt ;
     padding: 0 20px;
     background: #fff3ae;
     letter-spacing: 2px;

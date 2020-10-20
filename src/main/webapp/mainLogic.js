@@ -42,3 +42,8 @@ function  goToLogIn()
 {
     location='/index.html' ;
 }
+
+function goToSubastas()
+{
+    location='/subastaActual.html' ;
+}

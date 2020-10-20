@@ -7,6 +7,9 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
@@ -37,13 +40,28 @@ public class consegirInfoSubastaActual extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String sqlCode="";
+            String[] codigoObras = new String[3];
+            int contador=0;
             String nombreImg1,urlimg1,textoImg1,precioImg1,nombreImg2,urlimg2,textoImg2,precioImg2,nombreImg3,urlimg3,textoImg3,precioImg3,respuesta;
             DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM"); 
             DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
-            sqlCode = "SELECT * FROM `votacionSubasta` WHERE  month(fecha) = " + mes.format(LocalDateTime.now()) + " and year(fecha) =  " + año.format(LocalDateTime.now()) ;
+            sqlCode = "SELECT  codigoObra FROM `votando` WHERE  month(fechaVotacion) = " + mes.format(LocalDateTime.now()) + " and year(fechaVotacion) =  " + año.format(LocalDateTime.now()) ;
+            String sqlCode2="select * from obras where codigo=";
+            
+            myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+           
+         
             
             
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
             
+            while (resultadoConsulta.next()) {
+                codigoObras[0]  = resultadoConsulta.getString(1);
+                codigoObras[1]= resultadoConsulta.getString(2);
+                contador
+            }
             
             
             nombreImg1="La Monalisa"; 

@@ -9,6 +9,7 @@ import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -49,6 +50,12 @@ public class obraServlet extends HttpServlet {
             
             
             
+           
+            
+            
+            
+            
+            
             
             
             NombreObra="La Monalisa"; 
@@ -62,8 +69,7 @@ public class obraServlet extends HttpServlet {
             
             respuesta= NombreObra+","+imgObra+","+NombreAutor+","+imgAutor+","+PrecioDeSalida+","+PrecioSubasta+","+ValorActual+","+TiempoRestante;
             out.println(respuesta);
-        }
-    }
+        }    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

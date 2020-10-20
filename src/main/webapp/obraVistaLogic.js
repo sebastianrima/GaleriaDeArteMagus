@@ -28,7 +28,7 @@ function mostrarDatos(respuesta) {
     var tematica = datosSeparados[7];
     var movimiento = datosSeparados[8];
     var obraPicture = datosSeparados[9];
-
+    var autorObra1 = datosSeparados[10];
 
     document.getElementById("tituloObra1").innerHTML = tituloObra;
     document.getElementById("descripcionObra1").innerHTML = descripcion;
@@ -40,7 +40,7 @@ function mostrarDatos(respuesta) {
     document.getElementById("tematica").innerHTML = tematica;
     document.getElementById("movimiento").innerHTML = movimiento;
     document.getElementById("obraPicture1").src = obraPicture;
-
+    document.getElementById("autorObra1").innerHTML = autorObra1;
 
 
 }
