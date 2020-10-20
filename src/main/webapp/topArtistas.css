@@ -1,0 +1,145 @@
+body {
+    background-color: #edbc5c;
+}
+
+img
+{
+    width: 200px;
+    height: 300px;
+}
+
+#encabezado {
+    width: calc(100%);
+    height: fit-content;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+
+#tittleDiv {
+    background-color: #f7e9ba;
+    width: 45%;
+    height: 70px;
+    text-align: center;
+}
+
+h1 {
+    font-family: Serif;
+    color: #380101;
+    text-align: left;
+    margin-left: 2%;
+    font-size: 40px;
+    vertical-align: middle;
+    line-height: 70px;
+}
+
+h2{
+    font-family: Serif;
+    color: #380101;
+    text-align: left;
+    text-shadow: unset;
+    font-size: 50px;
+    vertical-align: middle;
+}
+
+h3{
+    font-family: Serif;
+    color: #380101;
+    text-align: left;
+    text-shadow: unset;
+    font-size: 32px;
+    vertical-align: middle;
+    line-height: 15px;
+
+}
+
+h4{
+    font-family: Serif;
+    color: #380101;
+    text-align: left;
+    text-shadow: unset;
+    font-size: 30px;
+    vertical-align: middle;
+    line-height: 15px;
+}
+
+.topDiv {
+    background-color: #FEF9E6;
+    margin-left: 5%;
+    margin-right: 5%;
+    height: fit-content;
+}
+
+#primerDiv {
+    margin-top: 4%;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+}
+.numero{
+    text-shadow: unset;
+    position: absolute;
+    width: fit-content;
+    margin-left: 5%;
+    line-height: 107px;
+    text-align: center;
+}
+
+#fotoAutor{
+    margin-left: 13%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.vl {
+    position: absolute;
+    margin-top: 4px;
+    border-left: 4px solid #380101;
+    margin-bottom: 4px;
+    height: 180px;
+    margin-left: 25%;
+  }
+
+.nombre{
+    text-shadow: unset;
+    position: absolute;
+    width: fit-content;
+    margin-top: 3%;
+    margin-left: 27%;
+    line-height: 135px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.obrasNum{
+    text-shadow: unset;
+    position: absolute;
+    width: fit-content;
+    margin-top: 3%;
+    margin-left: 47%;
+    line-height: 135px;
+    text-align: center;
+}
+
+.obrasFav{
+    text-shadow: unset;
+    position: absolute;
+    width: fit-content;
+    margin-top: 3%;
+    margin-left: 63%;
+    margin-right: 25px;
+    line-height: 135px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#segundoDiv{
+    margin-top: 5%;
+}
+
+#tercerDiv{
+    margin-top: 5%;
+
+}
