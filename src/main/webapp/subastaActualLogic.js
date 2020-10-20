@@ -40,6 +40,12 @@ function mostrarDatos(respuesta)
    var texto3=datosSeparados[10];
    var precio3=datosSeparados[11];
    
+   
+   
+    alert(respuesta);
+   
+   
+   
    document.getElementById("titulo1").innerHTML = titulo1;    
    document.getElementById("titulo2").innerHTML = titulo2;
    document.getElementById("titulo3").innerHTML = titulo3;
