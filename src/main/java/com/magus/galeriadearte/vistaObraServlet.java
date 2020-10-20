@@ -34,7 +34,7 @@ public class vistaObraServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String sqlCode="";
             String tituloObra, descripcion, precioBaseObra, fechaCreacion, tipo, color, emocion, tematica, movimiento, obraPicture, respuesta;
-            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo = "+campos[0];
+            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo = ";
 
             tituloObra="";
             descripcion="";

@@ -36,7 +36,7 @@ public class topArtistasServlet extends HttpServlet {
            String sqlCode="";
            String autor1, fotoAutor1, obrasNum1, obraFav1, autor2, 
            fotoAutor2, obrasNum2, obraFav2, autor3, fotoAutor3, obrasNum3, obraFav3;
-           sqlCode = "SELECT * FROM `artista` WHERE artista.puntaje ;
+           sqlCode = "SELECT * FROM `artista` WHERE artista.puntaje";
 
         }
     } 

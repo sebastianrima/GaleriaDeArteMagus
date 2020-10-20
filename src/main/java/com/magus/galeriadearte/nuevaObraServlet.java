@@ -36,25 +36,12 @@ public class nuevaObraServlet extends HttpServlet {
             String data = request.getParameter("data");
             String campos[] = data.split(",");
             String sqlCode = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";
-            myDb db = new myDb();
-            Connection con = db.getcon();
-            Statement stmt = con.createStatement();
+ 
 
         for (int i=0 ; i<campos.length-1;i++){
                 sqlCode+="\""+campos[i]+"\",";
             }
-            sqlCode+= "\""+campos[campos.length-1]+"\");";
-            stmt.executeUpdate(sqlCode);
-            out.print(sqlCode);
-            con.close();
-        }catch (SQLException ex) {
-          //  Logger.getLogger(guardarCliente.class.getName()).log(Level.SEVERE, null, ex);
-          //  PrintWriter out = response.getWriter();
-          //  out.print(ex);
-        }catch(IOError e)
-        {
-          //  PrintWriter out = response.getWriter();
-          //  out.print(e);
+      
         }
     } 
 
