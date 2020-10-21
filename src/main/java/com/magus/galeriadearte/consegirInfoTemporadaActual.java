@@ -63,8 +63,8 @@ public class consegirInfoTemporadaActual extends HttpServlet {
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
             
             while (resultadoConsulta.next()) {
-                datos[0]  = resultadoConsulta.getString(1);
-                datos[1]= resultadoConsulta.getString(2);
+                datos[0] = resultadoConsulta.getString(1);
+                datos[1] = resultadoConsulta.getString(2);
                 
                 rellenarDatos(datos[0]);
                 contador++;

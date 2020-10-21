@@ -35,30 +35,34 @@ public class nuevaObraServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 //Sacar info de la BD y guardarla en el select
-            String squlCode1 = "SELECT * FROM `obras`";
+            String squlCode1 = "SELECT codigoArtista, nombre FROM `artista`";
 
-           myDb db = new myDb();
-         //  Connection con = db.getcon();
-         //  Statement stmt = con.createStatement();
-          // ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
-           ArrayList<ArtistaClass> lista = new Arraylist();
-           ArtistaClass artista = null;
-
+         myDb db = new myDb();
+         Connection con = db.getcon();
+         Statement stmt = con.createStatement();
+         ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
+          
+           ArrayList<String> listaCodigos = new Arraylist();
+           ArrayList<String> listaNombres = new Arraylist();
+           
            while (resultadoConsulta.next()) {
-           artista = new ArtistaClass(resultadoConsulta.getString(1), resultadoConsulta.getString(2));
-           lista.add(artista);
-}
+           listaCodigos.add(resultadoConsulta.getString(0));
+           listaNombres.add(resultadoConsulta.getString(1));
+        }
 
+ 
+        for(int i=0;i<listaCodigos.size()-1;i++){
+            out.print(listaCodigos.get(i)+","+listaNombres.get(i)+",");
+        }
+            out.print(listaCodigos.get(listaCodigos.size()-1)+","+listaNombres.get(listaCodigos.size()-1))
 
 //Sacar la info de los campos del HTML y guardarla en la BD
           //  String data = request.getParameter("data");
           //  String campos[] = data.split(",");
           //  String sqlCode2 = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";
           //  ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode2);
-
-
       //  for (int i=0 ; i<campos.length-1;i++){
-      //          sqlCode+="\""+campos[i]+"\",";
+     //          sqlCode+="\""+campos[i]+"\",";
      //       }
       
         }
