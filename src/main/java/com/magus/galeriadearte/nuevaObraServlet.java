@@ -33,6 +33,21 @@ public class nuevaObraServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+//Sacar info de la BD y guardarla en el select
+            String squlCode1 = "SELECT * FROM `obras`";
+
+           myDb db = new myDb();
+           Connection con = db.getcon();
+           Statement stmt = con.createStatement();
+           ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            
+            while (resultadoConsulta.next()) {
+            ArrayList<String> lista= new Arraylist<String>();
+            lista.add(resultadoConsulta.getString(1)+","+resultadoConsulta.getString(2));
+}
+
+
+//Sacar la info de los campos del HTML y guardarla en la BD
             String data = request.getParameter("data");
             String campos[] = data.split(",");
             String sqlCode = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";

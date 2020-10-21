@@ -49,7 +49,7 @@ public class vistaObraServlet extends HttpServlet {
             
             
             
-             myDb db = new myDb();
+            myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
             movimiento=" ";
@@ -74,10 +74,6 @@ public class vistaObraServlet extends HttpServlet {
             while (resultadoConsulta2.next()) {
                 nombreArtista=resultadoConsulta2.getString(1);
             }
-           
-            
-            
-            
 
             respuesta = tituloObra +"ñ"+ descripcion +"ñ"+ precioBaseObra +"ñ"+ 
             fechaCreacion +"ñ"+ tipo +"ñ"+ color +"ñ"+ emocion +"ñ"+ 

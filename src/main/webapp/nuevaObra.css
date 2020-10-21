@@ -71,7 +71,7 @@ h1 {
 #descripcionText {
     margin-left: 10px;
     font-size: 14pt;
-    line-height: 14pt * 2;
+    line-height: 14pt;
     font-family: 'Fjalla One';
 }
 
@@ -160,7 +160,7 @@ select {
     width: 90%;
     display: block;
     font-size: 15pt;
-    line-height: 15pt * 2;
+    line-height: 15pt;
     font-family: 'Fjalla One';
     margin-bottom: 14pt ;
     border: none;
@@ -179,7 +179,7 @@ textarea {
     width: 90%;
     display: block;
     font-size: 14pt;
-    line-height: 15pt * 2;
+    line-height: 15pt;
     font-family: 'Fjalla One';
     margin-bottom: 14pt ;
     border: none;
