@@ -61,7 +61,7 @@ public class obraServlet extends HttpServlet {
                 respuesta += resultadoConsulta.getString(i);
                 if(i!=7){respuesta+=",";}
             }            
-            
+            out.println(respuesta);
             /*NombreObra="La Monalisa"; 
             imgObra="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg/368px-Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg";
             NombreAutor="Nicolaos de Esparta";
@@ -87,7 +87,11 @@ public class obraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(obraServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +105,11 @@ public class obraServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(obraServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
