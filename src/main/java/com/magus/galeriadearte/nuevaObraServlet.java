@@ -8,6 +8,7 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,25 +38,28 @@ public class nuevaObraServlet extends HttpServlet {
             String squlCode1 = "SELECT * FROM `obras`";
 
            myDb db = new myDb();
-           Connection con = db.getcon();
-           Statement stmt = con.createStatement();
-           ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
-            
-            while (resultadoConsulta.next()) {
-            ArrayList<String> lista= new Arraylist<String>();
-            lista.add(resultadoConsulta.getString(1)+","+resultadoConsulta.getString(2));
+         //  Connection con = db.getcon();
+         //  Statement stmt = con.createStatement();
+          // ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
+           ArrayList<ArtistaClass> lista = new Arraylist();
+           ArtistaClass artista = null;
+
+           while (resultadoConsulta.next()) {
+           artista = new ArtistaClass(resultadoConsulta.getString(1), resultadoConsulta.getString(2));
+           lista.add(artista);
 }
 
 
 //Sacar la info de los campos del HTML y guardarla en la BD
-            String data = request.getParameter("data");
-            String campos[] = data.split(",");
-            String sqlCode = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";
- 
+          //  String data = request.getParameter("data");
+          //  String campos[] = data.split(",");
+          //  String sqlCode2 = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";
+          //  ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode2);
 
-        for (int i=0 ; i<campos.length-1;i++){
-                sqlCode+="\""+campos[i]+"\",";
-            }
+
+      //  for (int i=0 ; i<campos.length-1;i++){
+      //          sqlCode+="\""+campos[i]+"\",";
+     //       }
       
         }
     } 
