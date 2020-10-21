@@ -1,4 +1,5 @@
 var xhttp = new XMLHttpRequest();
+var tipoMelo = "";
 
 window.onload = function () {
     myInfo = "";
@@ -16,7 +17,18 @@ function requestObraInfo() {
     xhttp.send();
 }
 
+function tipoNombre(tipo) {
+
+    if (tipo == 0) {
+        tipoMelo = "Pinutra";
+    }else{
+        tipoMelo = "Escultura";
+    }
+}
+
+
 function mostrarDatos(respuesta) {
+    
     var datosSeparados = respuesta.split("ñ");
     var tituloObra = datosSeparados[0];
     var descripcion = datosSeparados[1];
@@ -29,18 +41,17 @@ function mostrarDatos(respuesta) {
     var movimiento = datosSeparados[8];
     var obraPicture = datosSeparados[9];
     var autorObra1 = datosSeparados[10];
+    tipoNombre(tipo);
 
     document.getElementById("tituloObra1").innerHTML = tituloObra;
     document.getElementById("descripcionObra1").innerHTML = descripcion;
     document.getElementById("precioBaseObra1").innerHTML = precioBaseObra;
     document.getElementById("fechaC").innerHTML = fechaCreacion;
-    document.getElementById("tipo").innerHTML = tipo;
+    document.getElementById("tipo").innerHTML = tipoMelo;
     document.getElementById("color").innerHTML = color;
     document.getElementById("emocion").innerHTML = emocion;
     document.getElementById("tematica").innerHTML = tematica;
     document.getElementById("movimiento").innerHTML = movimiento;
     document.getElementById("obraPicture1").src = obraPicture;
     document.getElementById("autorObra1").innerHTML = autorObra1;
-
-
 }
