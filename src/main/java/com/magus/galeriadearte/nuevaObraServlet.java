@@ -8,7 +8,13 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,36 +41,30 @@ public class nuevaObraServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
 //Sacar info de la BD y guardarla en el select
-            String squlCode1 = "SELECT codigoArtista, nombre FROM `artista`";
+            String sqlCode1 = "SELECT codigoArtista, nombre FROM `artista`";
 
          myDb db = new myDb();
          Connection con = db.getcon();
          Statement stmt = con.createStatement();
          ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
           
-           ArrayList<String> listaCodigos = new Arraylist();
-           ArrayList<String> listaNombres = new Arraylist();
+           ArrayList<String> listaCodigos = new ArrayList<>();
+           ArrayList<String> listaNombres = new ArrayList<>();
            
-           while (resultadoConsulta.next()) {
-           listaCodigos.add(resultadoConsulta.getString(0));
-           listaNombres.add(resultadoConsulta.getString(1));
+           while (resultadoConsulta1.next()) {
+           listaCodigos.add(resultadoConsulta1.getString("codigoArtista"));
+           listaNombres.add(resultadoConsulta1.getString("nombre"));
         }
 
  
         for(int i=0;i<listaCodigos.size()-1;i++){
             out.print(listaCodigos.get(i)+","+listaNombres.get(i)+",");
         }
-            out.print(listaCodigos.get(listaCodigos.size()-1)+","+listaNombres.get(listaCodigos.size()-1))
+            out.print(listaCodigos.get(listaCodigos.size()-1)+","+listaNombres.get(listaCodigos.size()-1));
 
-//Sacar la info de los campos del HTML y guardarla en la BD
-          //  String data = request.getParameter("data");
-          //  String campos[] = data.split(",");
-          //  String sqlCode2 = "INSERT INTO obra(codigo,nombre,descripcion,precioBase,fecha,tipo,color,emocion,tematica,movimiento,url,codArtista,codObra) VALUES(";
-          //  ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode2);
-      //  for (int i=0 ; i<campos.length-1;i++){
-     //          sqlCode+="\""+campos[i]+"\",";
-     //       }
-      
+
+        } catch (SQLException ex) {
+            Logger.getLogger(nuevaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
 

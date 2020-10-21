@@ -5,8 +5,28 @@ xhttp.onreadystatechange = function ()
     if (this.readyState === 4 && this.status === 200)
     {
            alert(this.responseText);
+           mostrarArtistas(this.responseText);
            fillAutorSelect(this.responseText);
     }
+}
+
+function mostrarArtistas( respuesta){
+    var respuestaSplited = respuesta.split(",");
+    var opciones="";
+    
+    
+    for(var i=0; i<respuestaSplited.length;i+=2)
+    {
+        opciones+="<option value=\""+respuestaSplited[i]+"\">"+respuestaSplited[i+1]+"</option>";
+    }
+    
+    document.getElementById("autorSelect").innerHTML=opciones;
+    
+    
+    
+    
+    
+    
 }
 
 window.onload = function() {
