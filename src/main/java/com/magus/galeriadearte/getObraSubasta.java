@@ -5,15 +5,12 @@
  */
 package com.magus.galeriadearte;
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -24,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author USER
+ * @author Isaac
  */
-@WebServlet(name = "obraServlet", urlPatterns = {"/obraServlet"})
-public class obraServlet extends HttpServlet {
+@WebServlet(name = "getObraSubasta", urlPatterns = {"/getObraSubasta"})
+public class getObraSubasta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,45 +36,34 @@ public class obraServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String data = request.getParameter("data");
-            String campos = "1";
-            String sqlCode="";
-            String NombreObra,imgObra,imgAutor,NombreAutor,PrecioDeSalida,PrecioSubasta,ValorActual,TiempoRestante,respuesta;
-            respuesta="";
-             sqlCode = "SELECT * FROM `obras` WHERE obras.codigo ="+campos;
-     
-                    
-                    
-                    
-                    
+            /* TODO output your page here. You may use following sample code. */
+            //getObraSubasta
+            String sqlCode= "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
             myDb db = new myDb();
-            Connection con = db.getcon();
-            Statement stmt = con.createStatement();
-           
+         Connection con = db.getcon();
+         Statement stmt = con.createStatement();
+         ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+         String respuesta="";
          
-            
-            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);                   
-            
-            for(int i=0; i<8;i++){
-                respuesta += resultadoConsulta.getString(i);
-                if(i!=7){respuesta+=",";}
-            }            
+            while (resultadoConsulta1.next()) {
+                for(int i=1; i<21;i++){
+             respuesta+=resultadoConsulta1.getString(i);
+             if(i<20){
+                 respuesta+=",,";
+            }
+            }
+                
+            }
+         
             out.print(respuesta);
-            /*NombreObra="La Monalisa"; 
-            imgObra="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg/368px-Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg";
-            NombreAutor="Nicolaos de Esparta";
-            imgAutor="/PerfilAutor.png";
-            PrecioDeSalida="10$";
-            PrecioSubasta="900000$";
-            ValorActual="2$";
-            TiempoRestante="5H";
-            
-            respuesta= NombreObra+","+imgObra+","+NombreAutor+","+imgAutor+","+PrecioDeSalida+","+PrecioSubasta+","+ValorActual+","+TiempoRestante;
-            out.println(respuesta);*/
-        }    }
+                                
+        } catch (SQLException ex) {
+            Logger.getLogger(getObraSubasta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -91,11 +77,7 @@ public class obraServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(obraServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -109,11 +91,7 @@ public class obraServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(obraServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

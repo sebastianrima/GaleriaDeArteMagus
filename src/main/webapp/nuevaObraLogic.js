@@ -22,11 +22,6 @@ function mostrarArtistas( respuesta){
     
     document.getElementById("autorSelect").innerHTML=opciones;
     
-    
-    
-    
-    
-    
 }
 
 window.onload = function() {
@@ -63,8 +58,8 @@ function guardarObra()
     var autorTexto = document.getElementById("autorSelect");
     var autor= autorTexto.options[autorTexto.selectedIndex].value;
     
-    var myInfo = ","+nombre+","+descripcion+","+precioBase+","+fecha+","+
-    tipo+","+color+","+emocion+","+tematica+","+movimiento+","+imagen+","+autor+","+codCliente;
+    var myInfo = nombre+","+precioBase+","+imagen+","+fecha+","+
+    tipo+","+color+","+emocion+","+tematica+","+movimiento+","+descripcion+","+autor;
     
     alert(myInfo);
     xhttp.open("GET", "nuevaObraServlet?data="+myInfo, true);

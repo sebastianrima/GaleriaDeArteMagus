@@ -25,30 +25,37 @@ public class prueba {
 //Sacar info de la BD y guardarla en el select
             String sqlCode1 = "SELECT codigoArtista, nombre FROM `artista`";
 
-         myDb db = new myDb();
+        
+        
+            String sqlCode= "select * from obras where codigo = 6";
+            myDb db = new myDb();
          Connection con = db.getcon();
          Statement stmt;
         try {
             stmt = con.createStatement();
-            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
-          
-           ArrayList<String> listaCodigos = new ArrayList<>();
-           ArrayList<String> listaNombres = new ArrayList<>();
-           
-           while (resultadoConsulta1.next()) {
-           listaCodigos.add(resultadoConsulta1.getString("codigoArtista"));
-           listaNombres.add(resultadoConsulta1.getString("nombre"));
-        }
-
- 
-        for(int i=0;i<listaCodigos.size()-1;i++){
-            System.out.print(listaCodigos.get(i)+","+listaNombres.get(i)+",");
-        }
-            System.out.print(listaCodigos.get(listaCodigos.size()-1)+","+listaNombres.get(listaCodigos.size()-1));
-
+            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+         String respuesta="";
+         
+            while (resultadoConsulta1.next()) {
+                for(int i=0; i<8;i++){
+             respuesta+=resultadoConsulta1.getString(i);
+             if(i<7){
+                 respuesta+=",";
+            }
+            }
+                
+            }
+         
+            System.out.print(respuesta);
+    
         } catch (SQLException ex) {
             Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
         }
+         
+
+ 
+
+
          
     }
 }
