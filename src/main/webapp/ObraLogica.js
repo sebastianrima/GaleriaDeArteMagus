@@ -1,7 +1,6 @@
 var xhttp = new XMLHttpRequest();
 var myInfo;
 window.onload = function() {
-    myInfo="1";
     requestSubastaActual();
 };
 

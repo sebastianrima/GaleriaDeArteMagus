@@ -7,6 +7,12 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,27 +39,25 @@ public class AutorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String data = request.getParameter("data");
-            String campos[] = data.split(",");
-            String sqlCode="";
-            String NombreObra,imgObra,imgAutor,NombreAutor,PrecioDeSalida,PrecioSubasta,ValorActual,TiempoRestante,respuesta;
-            sqlCode = "SELECT * FROM `artista` WHERE artista.codigo ="+campos[0]+"SELECT * FROM `obras` WHERE obras.codigoArtista ="+campos[1];
-            
-            
-            
-            
-            
-            NombreObra="La Monalisa"; 
-            imgObra="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg/368px-Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg";
-            NombreAutor="Nicolaos de Esparta";
-            imgAutor="/PerfilAutor.png";
-            PrecioDeSalida="10$";
-            PrecioSubasta="900000$";
-            ValorActual="2$";
-            TiempoRestante="5H";
-            
-            respuesta= NombreObra+","+imgObra+","+NombreAutor+","+imgAutor+","+PrecioDeSalida+","+PrecioSubasta+","+ValorActual+","+TiempoRestante;
-            out.println(respuesta);
+            String sqlCode= "select * from artista,obra where codigoArtista =6 and artista.codigoArtista= obras.codigoArtista;";
+            myDb db = new myDb();
+         Connection con = db.getcon();
+         Statement stmt = con.createStatement();
+         ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+         String respuesta="";
+            while (resultadoConsulta1.next()) {
+                for(int i=1; i<80;i++){
+             respuesta+=resultadoConsulta1.getString(i);
+             if(i<79){
+                 respuesta+=",,";
+            }
+            }
+                
+            }
+         
+            out.print(respuesta);
+        } catch (SQLException ex) {
+            Logger.getLogger(AutorServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

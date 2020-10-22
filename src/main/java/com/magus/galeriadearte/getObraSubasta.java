@@ -55,6 +55,13 @@ public class getObraSubasta extends HttpServlet {
                  respuesta+=",,";
             }
             }
+                String sqlCode2= "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
+            myDb db2 = new myDb();
+         Connection con2 = db.getcon();
+         Statement stmt2 = con.createStatement();
+         ResultSet resultadoConsulta12 = stmt.executeQuery(sqlCode);
+         
+         
                 
             }
          
