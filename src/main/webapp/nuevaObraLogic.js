@@ -1,4 +1,7 @@
 var xhttp = new XMLHttpRequest();
+var xhttp1 = new XMLHttpRequest();
+
+
 
 xhttp.onreadystatechange = function ()
 {
@@ -50,7 +53,8 @@ function guardarObra()
     var tipoTexto = document.getElementById("TipoSelector");
     var tipo = tipoTexto.options[tipoTexto.selectedIndex].value;
     var colorTexto = document.getElementById("colorSelect");
-    var color= colorTexto.options[colorTexto.selectedIndex].value;
+    var color= colorTexto.options[colorTexto.selectedIndex].text;
+    alert(color);
     var emocion = document.getElementById("emocionText1").value;
     var tematica = document.getElementById("tematicaText1").value;
     var movimiento = document.getElementById("movimientoText1").value;
@@ -58,10 +62,23 @@ function guardarObra()
     var autorTexto = document.getElementById("autorSelect");
     var autor= autorTexto.options[autorTexto.selectedIndex].value;
     
-    var myInfo = nombre+","+precioBase+","+imagen+","+fecha+","+
-    tipo+","+color+","+emocion+","+tematica+","+movimiento+","+descripcion+","+autor;
+    var myInfo = nombre+",,"+precioBase+",,"+imagen+",,"+fecha+",,"+
+    tipo+",,"+color+",,"+emocion+",,"+tematica+",,"+movimiento+",,"+descripcion+",,"+autor;
     
     alert(myInfo);
-    xhttp.open("GET", "nuevaObraServlet?data="+myInfo, true);
-    xhttp.send();
+    xhttp1.open("GET", "guardarObra?data="+myInfo, true);
+    xhttp1.send();
+}
+
+
+xhttp1.onreadystatechange = function ()
+{
+    if (this.readyState === 4 && this.status === 200 && this.responseText !== "")
+    {
+           alert(this.responseText);
+    }
+    else
+    {
+        alert("¡ha ocurrido un problema con el servidor por favor intente más tarde!");
+    }
 }
