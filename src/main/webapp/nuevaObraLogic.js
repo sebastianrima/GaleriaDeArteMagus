@@ -76,9 +76,27 @@ xhttp1.onreadystatechange = function ()
     if (this.readyState === 4 && this.status === 200 && this.responseText !== "")
     {
            alert(this.responseText);
+           alert("La obra se guardo correctamenta");
+           goToMain();
     }
-    else
+    else if(this.readyState === 4 && this.status === 200)
     {
         alert("¡ha ocurrido un problema con el servidor por favor intente más tarde!");
     }
 }
+
+function goToMain()
+{
+    top.window.location="/main.html";
+}
+
+
+
+
+
+
+
+
+
+
+

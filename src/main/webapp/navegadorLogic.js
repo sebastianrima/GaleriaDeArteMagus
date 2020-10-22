@@ -18,7 +18,7 @@ function  goToObras()
 }
 function  goToMain()
 {
-        var url = new URL(top.window.location.href);
+    var url = new URL(top.window.location.href);
     nombre = url.searchParams.get("n");
     user= url.searchParams.get("u");
 
