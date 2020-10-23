@@ -4,8 +4,11 @@ var userName = url.searchParams.get("u");
 var nombre;
 window.onload = function () {
     requestTemporada();
+    
     getUser();
 };
+
+
 function getUser()
 {
     var url = new URL(window.location.href);

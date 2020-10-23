@@ -39,20 +39,21 @@ public class AutorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String sqlCode = "select * from artista,obra where codigoArtista =6 and artista.codigoArtista= obras.codigoArtista;";
+            String sqlCode = "select * from artista,obras where artista.codigoArtista =1 and artista.codigoArtista= obras.codigoArtista;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
             ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
             String respuesta = "";
+            String respuesta1 = "";
             while (resultadoConsulta1.next()) {
-                for (int i = 1; i < 80; i++) {
+                for (int i = 1; i <20; i++) {
                     respuesta += resultadoConsulta1.getString(i);
-                    if (i < 79) {
+                    if (i < 19) {
                         respuesta += ",,";
                     }
                 }
-
+                
             }
 
             out.print(respuesta);

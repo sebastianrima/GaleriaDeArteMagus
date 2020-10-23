@@ -7,6 +7,12 @@ package com.magus.galeriadearte;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +40,16 @@ public class votar extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           String sql = "update votando set votos=votos+1 where codigoObra=4;";
+            String codigoObra = request.getParameter("c");
+           String sql = "update votando set votos=votos+1 where codigoObra="+codigoObra;
+           myDb db = new myDb();
+           Connection con = db.getcon();
+           Statement stmt = con.createStatement();
+           stmt.executeUpdate(sql);
+           
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(votar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
