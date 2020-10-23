@@ -57,7 +57,7 @@ public class getObraSubasta extends HttpServlet {
                 }
 
             }
-
+            con.close();
             out.print(respuesta);
 
         } catch (SQLException ex) {

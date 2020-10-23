@@ -41,29 +41,29 @@ public class topArtistasServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String sqlCode = "";
-            String codigo = null, autor = null, fotoAutor = null, obrasNum = null, descripcion = null, puntaje = null, respuesta = "";
+            String codigo = null, autor = null, fotoAutor = null, obrasNum = null, descripcion = null, puntaje = null;
             //sqlCode = "SELECT * FROM `artista` WHERE artista.puntaje";         Así estaba
-            sqlCode = "SELECT codigoArtista, nombre, foto, descripcion, puntaje FROM `artista`";
+            sqlCode = "SELECT codigoArtista, nombre, urlFoto, descripcion, puntaje FROM `artista` ORDER BY puntaje DESC;";
 
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
-
-            while (resultadoConsulta.next()) {
-
-                for (int i = 1; i < 4; i++) {
-                    respuesta += resultadoConsulta.getString(i);
+            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+            String respuesta = "";
+            while (resultadoConsulta1.next()) {
+                for (int i = 1; i < 6; i++) {
+                    respuesta += resultadoConsulta1.getString(i);
                     respuesta += ",,";
                 }
             }
             con.close();
-            out.print(respuesta);
+            out.println(respuesta);
         } catch (SQLException ex) {
             Logger.getLogger(vistaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
