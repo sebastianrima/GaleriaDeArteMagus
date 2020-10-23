@@ -21,14 +21,14 @@ function tipoNombre(tipo) {
 
     if (tipo == 1) {
         tipoMelo = "Pinutra";
-    }else{
+    } else {
         tipoMelo = "Escultura";
     }
 }
 
 
 function mostrarDatos(respuesta) {
-    
+
     var datosSeparados = respuesta.split(",,");
     var tituloObra = datosSeparados[0];
     var descripcion = datosSeparados[1];

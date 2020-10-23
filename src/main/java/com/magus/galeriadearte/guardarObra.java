@@ -41,13 +41,11 @@ public class guardarObra extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String data = request.getParameter("data");
             String campos[] = data.split(",,");
-            String sqlCode = "INSERT INTO obras(nombre,precioBase,imagen,fechaCreacion,pintura,color,emocion ,tematica,movimiento,descripcion,codigoArtista) VALUES(\""+ campos[0]+"\","+campos[1]+",\""+campos[2]+"\",\""+campos[3]+"\","+campos[4]+",\""+campos[5]+"\",\""+campos[6]+"\",\""+campos[7]+"\",\""+campos[8]+"\",\""+campos[9]+"\","+campos[10]+");";
+            String sqlCode = "INSERT INTO obras(nombre,precioBase,imagen,fechaCreacion,pintura,color,emocion ,tematica,movimiento,descripcion,codigoArtista) VALUES(\"" + campos[0] + "\"," + campos[1] + ",\"" + campos[2] + "\",\"" + campos[3] + "\"," + campos[4] + ",\"" + campos[5] + "\",\"" + campos[6] + "\",\"" + campos[7] + "\",\"" + campos[8] + "\",\"" + campos[9] + "\"," + campos[10] + ");";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            
-            
-            
+
             stmt.executeUpdate(sqlCode);
             out.print(sqlCode);
             con.close();

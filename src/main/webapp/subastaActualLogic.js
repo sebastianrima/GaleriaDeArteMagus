@@ -13,7 +13,7 @@ function votar()
         document.getElementById("welcomeText").innerHTML = "Bienvenido " + nombre;
     else
     {
-        alert("Antes de votar porfavor inicia sesion");
+        alert("Antes de votar por favor inicia sesión");
         window.location = "/";
     }
 

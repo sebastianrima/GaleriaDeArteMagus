@@ -43,31 +43,25 @@ public class logearse extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String data = request.getParameter("data");
             String campos[] = data.split(",");
-            String contraseñaReal="admin";
-            String nombre="admin";
-            String sqlCode = "SELECT * FROM clientes WHERE usuario = \""+campos[0]+"\";";
-            
-            
+            String contraseñaReal = "admin";
+            String nombre = "admin";
+            String sqlCode = "SELECT * FROM clientes WHERE usuario = \"" + campos[0] + "\";";
+
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-           
-         
-            
-            
+
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
-            
+
             while (resultadoConsulta.next()) {
-               nombre = resultadoConsulta.getString(3);
-               contraseñaReal= resultadoConsulta.getString(5);
-               
+                nombre = resultadoConsulta.getString(3);
+                contraseñaReal = resultadoConsulta.getString(5);
+
             }
-            
+
             if (campos[1].equals(contraseñaReal)) {
                 out.print(nombre);
-            }
-            else
-            {
+            } else {
                 out.print("false");
             }
             con.close();

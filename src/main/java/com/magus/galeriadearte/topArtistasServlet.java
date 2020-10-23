@@ -50,7 +50,6 @@ public class topArtistasServlet extends HttpServlet {
             Statement stmt = con.createStatement();
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
 
-      
             while (resultadoConsulta.next()) {
                 autor = resultadoConsulta.getString(2);
                 fotoAutor = resultadoConsulta.getString(3);

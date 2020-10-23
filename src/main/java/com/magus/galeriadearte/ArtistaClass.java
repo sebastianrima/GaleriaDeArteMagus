@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.magus.galeriadearte;
 
 /**
@@ -14,7 +13,6 @@ public class ArtistaClass {
 
     private String codigo;
     private String nombre;
-
 
     public ArtistaClass() {
         this.codigo = "";
@@ -41,6 +39,7 @@ public class ArtistaClass {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     @Override
     public String toString() {
         return this.codigo + "," + this.nombre;

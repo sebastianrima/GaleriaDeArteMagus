@@ -44,27 +44,23 @@ public class obraServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String data = request.getParameter("data");
             String campos = "1";
-            String sqlCode="";
-            String NombreObra,imgObra,imgAutor,NombreAutor,PrecioDeSalida,PrecioSubasta,ValorActual,TiempoRestante,respuesta;
-            respuesta="";
-             sqlCode = "SELECT * FROM `obras` WHERE obras.codigo ="+campos;
-     
-                    
-                    
-                    
-                    
+            String sqlCode = "";
+            String NombreObra, imgObra, imgAutor, NombreAutor, PrecioDeSalida, PrecioSubasta, ValorActual, TiempoRestante, respuesta;
+            respuesta = "";
+            sqlCode = "SELECT * FROM `obras` WHERE obras.codigo =" + campos;
+
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-           
-         
-            
-            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);                   
-            
-            for(int i=0; i<8;i++){
+
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+
+            for (int i = 0; i < 8; i++) {
                 respuesta += resultadoConsulta.getString(i);
-                if(i!=7){respuesta+=",";}
-            }            
+                if (i != 7) {
+                    respuesta += ",";
+                }
+            }
             out.print(respuesta);
             /*NombreObra="La Monalisa"; 
             imgObra="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg/368px-Leonardo_da_Vinci_-_Mona_Lisa_%28Louvre%2C_Paris%29.jpg";
@@ -77,7 +73,8 @@ public class obraServlet extends HttpServlet {
             
             respuesta= NombreObra+","+imgObra+","+NombreAutor+","+imgAutor+","+PrecioDeSalida+","+PrecioSubasta+","+ValorActual+","+TiempoRestante;
             out.println(respuesta);*/
-        }    }
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -16,18 +16,17 @@ import java.util.logging.Logger;
  * @author Isaac
  */
 public class myDb {
-     Connection con;
-    public Connection getcon()
-    { 
+
+    Connection con;
+
+    public Connection getcon() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            
-            if(this.con == null)
-            {
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lagaleriadeartemaguri?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","root");
+
+            if (this.con == null) {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/lagaleriadeartemaguri?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "root");
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(myDb.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

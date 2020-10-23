@@ -5,7 +5,6 @@ package com.magus.galeriadearte;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,12 +47,11 @@ public class guardarCliente extends HttpServlet {
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            
-            
-            for (int i=0 ; i<campos.length-1;i++){
-                sqlCode+="\""+campos[i]+"\",";
+
+            for (int i = 0; i < campos.length - 1; i++) {
+                sqlCode += "\"" + campos[i] + "\",";
             }
-            sqlCode+= "\""+campos[campos.length-1]+"\");";
+            sqlCode += "\"" + campos[campos.length - 1] + "\");";
             stmt.executeUpdate(sqlCode);
             out.print(sqlCode);
             con.close();
@@ -61,8 +59,7 @@ public class guardarCliente extends HttpServlet {
             Logger.getLogger(guardarCliente.class.getName()).log(Level.SEVERE, null, ex);
             PrintWriter out = response.getWriter();
             out.print(ex);
-        }catch(IOError e)
-        {
+        } catch (IOError e) {
             PrintWriter out = response.getWriter();
             out.print(e);
         }

@@ -41,32 +41,30 @@ public class getObraSubasta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             //getObraSubasta
-            String sqlCode= "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
+            String sqlCode = "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
             myDb db = new myDb();
-         Connection con = db.getcon();
-         Statement stmt = con.createStatement();
-         ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
-         String respuesta="";
-         
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+            String respuesta = "";
+
             while (resultadoConsulta1.next()) {
-                for(int i=1; i<21;i++){
-             respuesta+=resultadoConsulta1.getString(i);
-             if(i<20){
-                 respuesta+=",,";
+                for (int i = 1; i < 21; i++) {
+                    respuesta += resultadoConsulta1.getString(i);
+                    if (i < 20) {
+                        respuesta += ",,";
+                    }
+                }
+                String sqlCode2 = "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
+                myDb db2 = new myDb();
+                Connection con2 = db.getcon();
+                Statement stmt2 = con.createStatement();
+                ResultSet resultadoConsulta12 = stmt.executeQuery(sqlCode);
+
             }
-            }
-                String sqlCode2= "select * from obras,artista where codigo =6 and artista.codigoArtista= obras.codigoArtista;";
-            myDb db2 = new myDb();
-         Connection con2 = db.getcon();
-         Statement stmt2 = con.createStatement();
-         ResultSet resultadoConsulta12 = stmt.executeQuery(sqlCode);
-         
-         
-                
-            }
-         
+
             out.print(respuesta);
-                                
+
         } catch (SQLException ex) {
             Logger.getLogger(getObraSubasta.class.getName()).log(Level.SEVERE, null, ex);
         }
