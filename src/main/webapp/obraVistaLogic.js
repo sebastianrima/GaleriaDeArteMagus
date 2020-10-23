@@ -19,7 +19,7 @@ function requestObraInfo() {
 
 function tipoNombre(tipo) {
 
-    if (tipo == 0) {
+    if (tipo == 1) {
         tipoMelo = "Pinutra";
     }else{
         tipoMelo = "Escultura";
@@ -29,7 +29,7 @@ function tipoNombre(tipo) {
 
 function mostrarDatos(respuesta) {
     
-    var datosSeparados = respuesta.split("ñ");
+    var datosSeparados = respuesta.split(",,");
     var tituloObra = datosSeparados[0];
     var descripcion = datosSeparados[1];
     var precioBaseObra = datosSeparados[2];

@@ -42,71 +42,60 @@ public class consegirInfoSubastaActual extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String sqlCode="";
+            String sqlCode = "";
             String[] codigoObras = new String[3];
-            int contador=0;
+            int contador = 0;
             String[] nombre = new String[3];
             String[] url = new String[3];
             String[] texto = new String[3];
             String[] precio = new String[3];
-            String nombreImg1,urlimg1,textoImg1,precioImg1,nombreImg2,urlimg2,textoImg2,precioImg2,nombreImg3,urlimg3,textoImg3,precioImg3,respuesta;
-            DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM"); 
+            String nombreImg1, urlimg1, textoImg1, precioImg1, nombreImg2, urlimg2, textoImg2, precioImg2, nombreImg3, urlimg3, textoImg3, precioImg3, respuesta;
+            DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM");
             DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
-            sqlCode = "SELECT  codigoObra FROM `votando` WHERE  month(fechaVotacion) = " + mes.format(LocalDateTime.now()) + " and year(fechaVotacion) =  " + año.format(LocalDateTime.now()) ;
-            
+            sqlCode = "SELECT  codigoObra FROM `votando` WHERE  month(fechaVotacion) = " + mes.format(LocalDateTime.now()) + " and year(fechaVotacion) =  " + año.format(LocalDateTime.now());
+
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-           
-         
-            
-            
+
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
-            
+
             while (resultadoConsulta.next()) {
-                codigoObras[contador]  = resultadoConsulta.getString(1);
+                codigoObras[contador] = resultadoConsulta.getString(1);
                 contador++;
             }
-           
-            
-            for (int i=0;i<3;i++) {
-                String sqlCode2="select nombre,precioBase,imagen,descripcion from obras where codigo=";
-                sqlCode2+=codigoObras[i]+";";
+
+            for (int i = 0; i < 3; i++) {
+                String sqlCode2 = "select nombre,precioBase,imagen,descripcion from obras where codigo=";
+                sqlCode2 += codigoObras[i] + ";";
                 ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode2);
                 while (resultadoConsulta2.next()) {
-                    nombre[i]=resultadoConsulta2.getString(1);
-                    precio[i]=resultadoConsulta2.getString(2);
-                    url[i]=resultadoConsulta2.getString(3);
-                    texto[i]=resultadoConsulta2.getString(4);
-                 }   
+                    nombre[i] = resultadoConsulta2.getString(1);
+                    precio[i] = resultadoConsulta2.getString(2);
+                    url[i] = resultadoConsulta2.getString(3);
+                    texto[i] = resultadoConsulta2.getString(4);
+                }
             }
-         
-            respuesta=nombre[0]+"ñ"+url[0]+"ñ"+texto[0]+"ñ"+precio[0]+"ñ"+nombre[1]+"ñ"+url[1]+"ñ"+texto[1]+"ñ"+precio[1]+"ñ"+nombre[2]+"ñ"+url[2]+"ñ"+texto[2]+"ñ"+precio[2];
-            out.println(respuesta) ;
+
+            respuesta = nombre[0] + "ñ" + url[0] + "ñ" + texto[0] + "ñ" + precio[0] + "ñ" + nombre[1] + "ñ" + url[1] + "ñ" + texto[1] + "ñ" + precio[1] + "ñ" + nombre[2] + "ñ" + url[2] + "ñ" + texto[2] + "ñ" + precio[2];
+            out.println(respuesta);
         } catch (SQLException ex) {
             Logger.getLogger(consegirInfoSubastaActual.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void getObrasInfo(String[] codigos)
-    {  
+
+    private void getObrasInfo(String[] codigos) {
         try {
-            
-            
+
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            
-           
-            
-            
-            
+
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(consegirInfoSubastaActual.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
