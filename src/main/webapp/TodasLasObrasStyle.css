@@ -1,0 +1,23 @@
+body
+{
+    background-color: #fae8a0;
+}
+#encabezado
+{
+    width: calc(100%);
+    height: fit-content;
+    margin-bottom: 10px;
+    height: fit-content;
+}
+table{
+    top: 30%;
+    left:27%;
+    font-family:  'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.8pt;
+    word-spacing: 8.6pt;
+    line-height: 1.1;
+    color: #380101;
+    text-align: center;
+}
