@@ -68,8 +68,7 @@ function validarDatos() {
         if (isNaN(precioBase)) {
             alert("El precio debe ser un número...");
         } else {
-            alert("todo melo");
-            //guardarObra(nombre, precioBase, imagen, fecha, tipo, color, emocion, tematica, movimiento, descripcion, autor);
+            guardarObra(nombre, precioBase, imagen, fecha, tipo, color, emocion, tematica, movimiento, descripcion, autor);
         }
     }
 

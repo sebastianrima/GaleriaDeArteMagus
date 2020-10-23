@@ -1,6 +1,7 @@
 var xhttp = new XMLHttpRequest();
-
-
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombre;
 window.onload = function () {
     requestTemporada();
     getUser();
@@ -8,7 +9,7 @@ window.onload = function () {
 function getUser()
 {
     var url = new URL(window.location.href);
-    var nombre = url.searchParams.get("n");
+    nombre = url.searchParams.get("n");
     if (nombre !== null)
         document.getElementById("welcomeText").innerHTML = "Bienvenido " + nombre;
 }
@@ -46,13 +47,14 @@ function  goToLogIn()
 
 function goToSubastas()
 {
-    location = '/subastaActual.html';
+    location = '/subastaActual.html?u=' + userName + "&n=" + nombre;
+ 
 }
 function goToTopArtista()
 {
-    location = '/topArtistas.html';
+    location = '/topArtistas.htmlu=' + userName + "&n=" + nombre;
 }
 function goToArtistaTemporada()
 {
-    location = '/Autor.html';
+    location = '/Autor.html?u=' + userName + "&n=" + nombre;
 }

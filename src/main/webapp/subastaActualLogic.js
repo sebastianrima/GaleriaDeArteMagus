@@ -1,5 +1,10 @@
 var xhttp = new XMLHttpRequest();
-
+var codigo1;
+var codigo2;
+var codigo3;
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombre=url.searchParams.get("n");;
 
 window.onload = function () {
     requestSubastaActual();
@@ -31,18 +36,18 @@ function mostrarDatos(respuesta)
     var img1 = datosSeparados[1];
     var texto1 = datosSeparados[2];
     var precio1 = datosSeparados[3];
-    var titulo2 = datosSeparados[4];
-    var img2 = datosSeparados[5];
-    var texto2 = datosSeparados[6];
-    var precio2 = datosSeparados[7];
-    var titulo3 = datosSeparados[8];
-    var img3 = datosSeparados[9];
-    var texto3 = datosSeparados[10];
-    var precio3 = datosSeparados[11];
+    codigo1= datosSeparados[4];
+    var titulo2 = datosSeparados[5];
+    var img2 = datosSeparados[6];
+    var texto2 = datosSeparados[7];
+    var precio2 = datosSeparados[8];
+    codigo2=datosSeparados[9];
+    var titulo3 = datosSeparados[10];
+    var img3 = datosSeparados[11];
+    var texto3 = datosSeparados[12];
+    var precio3 = datosSeparados[13];
+    codigo3=datosSeparados[14];
 
-
-
-    alert(respuesta);
 
 
     document.getElementById("titulo1").innerHTML = titulo1;
@@ -54,6 +59,10 @@ function mostrarDatos(respuesta)
     document.getElementById("texto1").innerHTML = texto1;
     document.getElementById("texto2").innerHTML = texto2;
     document.getElementById("texto3").innerHTML = texto3;
+    document.getElementById("precio1").innerHTML = "COP $"+precio1;
+    document.getElementById("precio2").innerHTML = "COP $"+precio2;
+    document.getElementById("precio3").innerHTML = "COP $"+precio3;
+    
 }
 xhttp.onreadystatechange = function ()
 {
@@ -67,5 +76,20 @@ function  goToLogIn()
     location = '/index.html';
 }
 
-
+function verObra( codigo)
+{
+    if(codigo === "codigo1")
+    {
+        codigo = codigo1;
+    }
+    if(codigo === "codigo2")
+    {
+        codigo = codigo2;
+    }
+    if(codigo === "codigo3")
+    {
+        codigo = codigo3;
+    }
+    location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + codigo;
+}
 

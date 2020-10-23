@@ -23,7 +23,6 @@ function validacionCliente() {
             if (isNaN(telefono)) {
                 alert("El teléfono debe contener únicamente números...");
             } else {
-                alert("Datos melos");
                 guardarCliente(name, userName, password, correo, telefono);
             }
         } else {

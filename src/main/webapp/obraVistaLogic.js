@@ -1,9 +1,15 @@
 var xhttp = new XMLHttpRequest();
+var xhttp1 = new XMLHttpRequest();
 var tipoMelo = "";
+var url = new URL(window.location.href);
+var codigo = url.searchParams.get("c");
+var user = url.searchParams.get("u");
+var codigoCliente;
 
 window.onload = function () {
     myInfo = "";
     requestObraInfo();
+    
 };
 
 xhttp.onreadystatechange = function () {
@@ -13,14 +19,24 @@ xhttp.onreadystatechange = function () {
 }
 
 function requestObraInfo() {
-    xhttp.open("GET", "vistaObraServlet", true);
+    xhttp.open("GET", "vistaObraServlet?c=" + codigo, true);
     xhttp.send();
+}
+
+function estaComprada() {
+    if (codigoCliente !== "null") {
+        document.getElementById("botonComprarObra").innerHTML = "Esta Obra está comprada";
+        document.getElementById("botonComprarObra").disable = true;
+        
+        
+        //me demoro un rato voy a traer el almuerzo unos 20 mins, sige tu un rato, deja subo aq git
+    }
 }
 
 function tipoNombre(tipo) {
 
     if (tipo == 1) {
-        tipoMelo = "Pinutra";
+        tipoMelo = "Pintura";
     } else {
         tipoMelo = "Escultura";
     }
@@ -41,7 +57,9 @@ function mostrarDatos(respuesta) {
     var movimiento = datosSeparados[8];
     var obraPicture = datosSeparados[9];
     var autorObra1 = datosSeparados[10];
-    tipoNombre(tipo);
+    codigoCliente = datosSeparados[11];
+    var codigoAutor = datosSeparados[12];
+    estaComprada();
 
     document.getElementById("tituloObra1").innerHTML = tituloObra;
     document.getElementById("descripcionObra1").innerHTML = descripcion;
@@ -54,4 +72,16 @@ function mostrarDatos(respuesta) {
     document.getElementById("movimiento").innerHTML = movimiento;
     document.getElementById("obraPicture1").src = obraPicture;
     document.getElementById("autorObra1").innerHTML = autorObra1;
+}
+function comprarObra()
+{
+    xhttp1.open("GET", "comprarObra?c=" + codigo + "&u=" + user, true);
+    xhttp1.send();
+}
+
+
+xhttp1.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+        alert(this.responseText);
+    }
 }

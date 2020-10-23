@@ -39,11 +39,11 @@ public class vistaObraServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String codigo = "4";
+            String codigo = request.getParameter("c");
             String codigoArtista = "1";
             String sqlCode = "";
             String nombreArtista = "";
-            String tituloObra = null, descripcion = null, precioBaseObra = null, fechaCreacion = null, tipo = null, color = null, emocion = null, tematica = null, movimiento = null, obraPicture = null, respuesta;
+            String tituloObra = null, descripcion = null, codigoCliente = null, codigoAutor = null, precioBaseObra = null, fechaCreacion = null, tipo = null, color = null, emocion = null, tematica = null, movimiento = null, obraPicture = null, respuesta;
             sqlCode = "SELECT * FROM `obras` WHERE obras.codigo = " + codigo;
 
             myDb db = new myDb();
@@ -63,16 +63,18 @@ public class vistaObraServlet extends HttpServlet {
                 tematica = resultadoConsulta.getString(9);
                 movimiento = resultadoConsulta.getString(10);
                 descripcion = resultadoConsulta.getString(11);
+                codigoCliente = resultadoConsulta.getString(12);
+                codigoAutor = resultadoConsulta.getString(13);
             }
             ResultSet resultadoConsulta2 = stmt.executeQuery("SELECT nombre FROM artista WHERE artista.codigoArtista=" + codigoArtista);
 
             while (resultadoConsulta2.next()) {
                 nombreArtista = resultadoConsulta2.getString(1);
             }
-
+            
             respuesta = tituloObra + ",," + descripcion + ",," + precioBaseObra + ",,"
                     + fechaCreacion + ",," + tipo + ",," + color + ",," + emocion + ",,"
-                    + tematica + ",," + movimiento + ",," + obraPicture + ",," + nombreArtista;
+                    + tematica + ",," + movimiento + ",," + obraPicture + ",," + nombreArtista+ ",," + codigoCliente+ ",," + codigoAutor;
             con.close();
             out.println(respuesta);
         } catch (SQLException ex) {

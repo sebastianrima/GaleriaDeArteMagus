@@ -27,14 +27,28 @@ import javax.servlet.http.HttpServletResponse;
 public class prueba {
     
     public static void main(String[] args) throws SQLException {
-            String data = "Hombre de Vitruvio,,1500000,,https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitruvian_Man_by_Leonardo_da_Vinci.jpg/245px-Vitruvian_Man_by_Leonardo_da_Vinci.jpg,,1492-05-14,,1,,gris,,felicidad,,cuerpo humano,,renacimiento,,El Hombre de Vitruvio o Estudio de las proporciones ideales del cuerpo humano es un famoso dibujo acompañado de notas anatómicas de Leonardo da Vinci realizado alrededor de 1490 en uno de sus diarios. Representa una figura masculina desnuda en dos posiciones sobreimpresas de brazos y piernas e inscrita en una circunferencia y un cuadrado (Ad quadratum). Se trata de un estudio de las proporciones del cuerpo humano, realizado a partir de los textos de arquitectura de Vitruvio, arquitecto de la antigua Roma, del cual el dibujo toma su nombre.,,2";
-            String campos[] = data.split(",,");
-            String sqlCode = "INSERT INTO obras(nombre,precioBase,imagen,fechaCreacion,pintura,color,emocion ,tematica,movimiento,descripcion,codigoArtista) VALUES(\""+ campos[0]+"\","+campos[1]+",\""+campos[2]+"\",\""+campos[3]+"\","+campos[4]+",\""+campos[5]+"\",\""+campos[6]+"\",\""+campos[7]+"\",\""+campos[8]+"\",\""+campos[9]+"\""+campos[10]+");";
-           
+            String codigo = "4";
+            String user = "ihy";
+            String codigoUser="";
+            String sqlCode1 = "select codigoCliente from clientes where usuario =\""+user+"\";";
+            
+                
+            myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+            
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode1);
+            while (resultadoConsulta.next()) {
+                codigoUser = resultadoConsulta.getString(1);
+            }
+            
+            String sqlCode2 = "UPDATE obras  SET codigoCliente = "+codigoUser+ " WHERE obras.codigo="+codigo+";";
+            stmt.executeUpdate(sqlCode2);
             
             
             
-            System.out.print(sqlCode);
+            System.out.print("Obra comprada con exito!!!");
+            con.close();
         
     }
 }

@@ -77,7 +77,7 @@ public class consegirInfoSubastaActual extends HttpServlet {
                 }
             }
 
-            respuesta = nombre[0] + ",," + url[0] + ",," + texto[0] + ",," + precio[0] + ",," + nombre[1] + ",," + url[1] + ",," + texto[1] + ",," + precio[1] + ",," + nombre[2] + ",," + url[2] + ",," + texto[2] + ",," + precio[2];
+            respuesta = nombre[0] + ",," + url[0] + ",," + texto[0] + ",," + precio[0] + ",," +codigoObras[0]+",,"+ nombre[1] + ",," + url[1] + ",," + texto[1] + ",," + precio[1] + ",," +codigoObras[1]+",,"+ nombre[2] + ",," + url[2] + ",," + texto[2] + ",," + precio[2]+",,"+codigoObras[2];
             out.println(respuesta);
         } catch (SQLException ex) {
             Logger.getLogger(consegirInfoSubastaActual.class.getName()).log(Level.SEVERE, null, ex);

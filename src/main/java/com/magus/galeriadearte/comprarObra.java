@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Nicolas
+ * @author Isaac
  */
-@WebServlet(name = "nuevaObraServlet", urlPatterns = {"/nuevaObraServlet"})
-public class nuevaObraServlet extends HttpServlet {
+@WebServlet(name = "comprarObra", urlPatterns = {"/comprarObra"})
+public class comprarObra extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,34 +40,30 @@ public class nuevaObraServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-
-            //Sacar info de la BD y guardarla en el select
+            String codigo = request.getParameter("c");
+            String user = request.getParameter("u");
+            String codigoUser="";
+            String sqlCode1 = "select codigoCliente from clientes where usuario =\""+user+"\";";
             
-            
-            
-            
-            String sqlCode1 = "SELECT codigoArtista, nombre FROM `artista`";
-
+                
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode1);
-
-            ArrayList<String> listaCodigos = new ArrayList<>();
-            ArrayList<String> listaNombres = new ArrayList<>();
-
-            while (resultadoConsulta1.next()) {
-                listaCodigos.add(resultadoConsulta1.getString("codigoArtista"));
-                listaNombres.add(resultadoConsulta1.getString("nombre"));
+            
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode1);
+            while (resultadoConsulta.next()) {
+                codigoUser = resultadoConsulta.getString(1);
             }
-
-            for (int i = 0; i < listaCodigos.size() - 1; i++) {
-                out.print(listaCodigos.get(i) + "," + listaNombres.get(i) + ",");
-            }
-            out.print(listaCodigos.get(listaCodigos.size() - 1) + "," + listaNombres.get(listaCodigos.size() - 1));
-
+            
+            String sqlCode2 = "UPDATE obras  SET codigoCliente = "+codigoUser+ " WHERE obras.codigo="+codigo+";";
+            stmt.executeUpdate(sqlCode2);
+            
+            
+            
+            out.print("Obra comprada con exito!!!");
+            con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(nuevaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(comprarObra.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
