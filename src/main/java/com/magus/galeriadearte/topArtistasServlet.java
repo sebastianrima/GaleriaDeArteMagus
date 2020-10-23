@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -42,28 +41,24 @@ public class topArtistasServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String sqlCode = "";
-            String autor = null, fotoAutor = null, obrasNum = null, obraFav = null, respuesta;
+            String codigo = null, autor = null, fotoAutor = null, obrasNum = null, descripcion = null, puntaje = null, respuesta = "";
             //sqlCode = "SELECT * FROM `artista` WHERE artista.puntaje";         Así estaba
-            sqlCode = "SELECT * FROM `artista`";
+            sqlCode = "SELECT codigoArtista, nombre, foto, descripcion, puntaje FROM `artista`";
 
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
-            //ArrayList<Artista> lista = new Arraylist();
-                //gucci 
-                List artistas = new ArrayList<Artista>();
 
             while (resultadoConsulta.next()) {
-                autor = resultadoConsulta.getString(2);
-                fotoAutor = resultadoConsulta.getString(3);
-                obrasNum = resultadoConsulta.getString(4);
-                obraFav = resultadoConsulta.getString(5);
 
+                for (int i = 1; i < 4; i++) {
+                    respuesta += resultadoConsulta.getString(i);
+                    respuesta += ",,";
+                }
             }
-            respuesta = autor + ",," + fotoAutor + ",," + obrasNum + ",," + obraFav;
             con.close();
-            out.println(respuesta);
+            out.print(respuesta);
         } catch (SQLException ex) {
             Logger.getLogger(vistaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
