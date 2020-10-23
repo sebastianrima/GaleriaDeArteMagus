@@ -1,4 +1,5 @@
 var xhttp = new XMLHttpRequest();
+var xhttp1 = new XMLHttpRequest();
 var codigo1;
 var codigo2;
 var codigo3;
@@ -93,3 +94,22 @@ function verObra( codigo)
     location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + codigo;
 }
 
+function goToSubastaActiva()
+{
+    location = '/Obra.html?u=' + userName + "&n=" + nombre;
+}
+
+function votar()
+{
+    
+    xhttp1.open("GET", "votar", true);
+    xhttp1.send();
+   
+}
+xhttp1.onreadystatechange = function ()
+{
+    if (this.readyState === 4 && this.status === 200)
+    {
+        mostrarDatos(this.responseText);
+    }
+}

@@ -9,7 +9,7 @@ var codigoCliente;
 window.onload = function () {
     myInfo = "";
     requestObraInfo();
-    
+
 };
 
 xhttp.onreadystatechange = function () {
@@ -26,10 +26,10 @@ function requestObraInfo() {
 function estaComprada() {
     if (codigoCliente !== "null") {
         document.getElementById("botonComprarObra").innerHTML = "Esta Obra está comprada";
-        document.getElementById("botonComprarObra").disable = true;
-        
-        
-        //me demoro un rato voy a traer el almuerzo unos 20 mins, sige tu un rato, deja subo aq git
+        var btn = document.getElementById("botonComprarObra");
+        btn.disabled = true;
+        btn.style = "cursor: not-allowed;";
+       // btn.style = "transform: none;";
     }
 }
 
@@ -83,5 +83,9 @@ function comprarObra()
 xhttp1.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
         alert(this.responseText);
+        document.getElementById("botonComprarObra").innerHTML = "Esta Obra está comprada";
+        var btn = document.getElementById("botonComprarObra");
+        btn.disabled = true;
+        btn.style = "cursor: not-allowed;";
     }
 }

@@ -27,12 +27,14 @@ import javax.servlet.http.HttpServletResponse;
 public class prueba {
     
     public static void main(String[] args) throws SQLException {
-            String codigo = "4";
+            String codigoObra = "6";
             String user = "ihy";
             String codigoUser="";
             String sqlCode1 = "select codigoCliente from clientes where usuario =\""+user+"\";";
+            String sqlCode3 ="select codigoArtista  from obras where codigo = "+codigoObra+";";
+            String codigoArtista=""; 
             
-                
+            
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
@@ -42,13 +44,17 @@ public class prueba {
                 codigoUser = resultadoConsulta.getString(1);
             }
             
-            String sqlCode2 = "UPDATE obras  SET codigoCliente = "+codigoUser+ " WHERE obras.codigo="+codigo+";";
+            String sqlCode2 = "UPDATE obras  SET codigoCliente = "+codigoUser+ " WHERE obras.codigo="+codigoObra+";";
             stmt.executeUpdate(sqlCode2);
             
+            ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode3);
+            while (resultadoConsulta2.next()) {
+                codigoArtista = resultadoConsulta2.getString(1);
+            }
             
-            
+           
+
             System.out.print("Obra comprada con exito!!!");
-            con.close();
         
     }
 }

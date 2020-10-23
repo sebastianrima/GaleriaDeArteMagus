@@ -36,7 +36,6 @@ xhttp.onreadystatechange = function ()
 {
     if (this.readyState === 4 && this.status === 200)
     {
-        alert(this.responseText);
         mostrarDatos(this.responseText);
     }
 }
@@ -52,7 +51,7 @@ function goToSubastas()
 }
 function goToTopArtista()
 {
-    location = '/topArtistas.htmlu=' + userName + "&n=" + nombre;
+    location = '/topArtistas.html?u=' + userName + "&n=" + nombre;
 }
 function goToArtistaTemporada()
 {

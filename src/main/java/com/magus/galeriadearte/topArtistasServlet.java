@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -49,12 +50,16 @@ public class topArtistasServlet extends HttpServlet {
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            //ArrayList<Artista> lista = new Arraylist();
+                //gucci 
+                List artistas = new ArrayList<Artista>();
 
             while (resultadoConsulta.next()) {
                 autor = resultadoConsulta.getString(2);
                 fotoAutor = resultadoConsulta.getString(3);
                 obrasNum = resultadoConsulta.getString(4);
                 obraFav = resultadoConsulta.getString(5);
+
             }
             respuesta = autor + ",," + fotoAutor + ",," + obrasNum + ",," + obraFav;
             con.close();
