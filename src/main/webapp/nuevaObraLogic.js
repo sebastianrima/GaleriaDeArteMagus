@@ -63,7 +63,7 @@ function validarDatos() {
     var autor = autorTexto.options[autorTexto.selectedIndex].value;
 
     if (nombre == "" || descripcion == "" || precioBase == "" || fecha == "" || tipo == "" || color == "Escoger" || emocion == "" || tematica == "" || movimiento == "" || imagen == "" || autor == "") {
-        alert("Llene los campos...");
+        alert("Llene todos los campos...");
     } else {
         if (isNaN(precioBase)) {
             alert("El precio debe ser un número...");
@@ -71,7 +71,6 @@ function validarDatos() {
             alert("todo melo");
             //guardarObra(nombre, precioBase, imagen, fecha, tipo, color, emocion, tematica, movimiento, descripcion, autor);
         }
-
     }
 
 }
