@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Obra</title>
+        <link rel="stylesheet" href="nuevaTemporada.css">
+        <link href="https://fonts.googleapis.com/css2?family=Piedra&family=Staatliches&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+        <script src="nuevaTemporadaLogic.js"></script>
+
+    </head>
+
+    <body>
+
+        <iframe id="encabezado" src="navegador.html" frameBorder="0"></iframe>
+        <div id="divh1">
+            <h1>Registro nueva temporada</h1>
+        </div>
+        <div>
+            <img id="imagenPred" src="Imagenes/tematica.jpg">
+        </div>
+        <div id="whiteDiv">
+            <p id="nombreText">Título de la temporada<input type="text" id="nombreText1" name="nombre" size="40" placeholder="Escriba aquí"> </p>
+            <p id="descripcionText">Descripción<textarea type="text" id="descripcionText1" name="descripción" size="40" placeholder="Escriba aquí" rows="4"></textarea></p>
+            <p id="fechaText">Fecha de inicio<input type="date" name="fecha" size="40"></p>
+            <p id="duracionnText">Duración<input type="text" id="duracionText1" name="duracion" size="40" placeholder="Escriba aquí">
+            </p>
+            <p><input type="button" name="sendbuton" size="40" value="Guardar Obra" class="centrado" id="createObraButton" onclick="validarDatos()">
+            </p>
+        </div>
+        <footer>
+            <iframe id="footer" src="footer.html" frameBorder="0"></iframe>
+        </footer>
+
+    </body>
+
+</html>
