@@ -70,7 +70,6 @@ public class comprarObra extends HttpServlet {
             stmt.executeUpdate(sqlCode4);
             
             out.print("Obra comprada con exito!!!");
-            out.print(codigoArtista);
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(comprarObra.class.getName()).log(Level.SEVERE, null, ex);
