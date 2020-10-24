@@ -55,7 +55,6 @@ public class getObraSubasta extends HttpServlet {
                         respuesta += ",,";
                     }
                 }
-
             }
             con.close();
             out.print(respuesta);

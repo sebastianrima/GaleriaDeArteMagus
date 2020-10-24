@@ -27,34 +27,49 @@ import javax.servlet.http.HttpServletResponse;
 public class prueba {
     
     public static void main(String[] args) throws SQLException {
-            String codigoObra = "6";
-            String user = "ihy";
-            String codigoUser="";
-            String sqlCode1 = "select codigoCliente from clientes where usuario =\""+user+"\";";
-            String sqlCode3 ="select codigoArtista  from obras where codigo = "+codigoObra+";";
-            String codigoArtista=""; 
-            
-            
-            myDb db = new myDb();
-            Connection con = db.getcon();
-            Statement stmt = con.createStatement();
-            
-            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode1);
-            while (resultadoConsulta.next()) {
-                codigoUser = resultadoConsulta.getString(1);
-            }
-            
-            String sqlCode2 = "UPDATE obras  SET codigoCliente = "+codigoUser+ " WHERE obras.codigo="+codigoObra+";";
-            stmt.executeUpdate(sqlCode2);
-            
-            ResultSet resultadoConsulta2 = stmt.executeQuery(sqlCode3);
-            while (resultadoConsulta2.next()) {
-                codigoArtista = resultadoConsulta2.getString(1);
-            }
-            
+            String codigoObra = "4";
+           String usuario = "ihy";
+             String sql = "update votando set votos=votos+1 where codigoObra="+codigoObra;
+           String sql1 = "update clientes set  fechaUltimaVotacion = current_date() where usuario=\""+usuario+"\"";
+           String fecha="";
+           String busqueda = "select month(fechaUltimaVotacion),year(fechaUltimaVotacion) from clientes where usuario=\""+usuario+"\";";
+           DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM");
+           DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
+           DateTimeFormatter dia = DateTimeFormatter.ofPattern("dd");
+           String mesUltima="";
+           String añoUltima="";
            
-
-            System.out.print("Obra comprada con exito!!!");
-        
+           
+           
+           System.out.print(dia.format(LocalDateTime.now()));
+           
+           
+           
+           myDb db = new myDb();
+           Connection con = db.getcon();
+           Statement stmt = con.createStatement();
+           
+           ResultSet resultadoConsulta1 = stmt.executeQuery(busqueda);
+           while (resultadoConsulta1.next()) {
+                
+                   mesUltima= resultadoConsulta1.getString(1);
+                   añoUltima=  resultadoConsulta1.getString(2);
+            }
+           if(!(fecha instanceof String))
+           {
+                stmt.executeUpdate(sql1);
+           
+                stmt.executeUpdate(sql);
+                System.out.print("Has votado correctamente");
+           }else
+           {
+               if(mes.format(LocalDateTime.now()).equals(mesUltima) && año.format(LocalDateTime.now()).equals(añoUltima))
+                   System.out.print("false");
+                 
+               else
+               {
+                   System.out.print("votar");
+               }
+           }
     }
 }

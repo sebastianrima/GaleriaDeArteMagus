@@ -99,17 +99,36 @@ function goToSubastaActiva()
     location = '/Obra.html?u=' + userName + "&n=" + nombre;
 }
 
-function votar()
+function votar(codigo)
 {
-    
-    xhttp1.open("GET", "votar", true);
+    if(codigo === "codigo1")
+    {
+        codigo = codigo1;
+    }
+    if(codigo === "codigo2")
+    {
+        codigo = codigo2;
+    }
+    if(codigo === "codigo3")
+    {
+        codigo = codigo3;
+    }
+    alert(userName);
+    xhttp1.open("GET", "votar?c="+codigo+ "&u=" + userName, true);
     xhttp1.send();
-   
 }
+
 xhttp1.onreadystatechange = function ()
 {
     if (this.readyState === 4 && this.status === 200)
     {
-        mostrarDatos(this.responseText);
+        if(this.responseText === "false")
+        {
+            alert("ya has votado esta temporada porfavor espera a la siguiente");
+        }else
+        {
+            alert(this.responseText);
+        }
+        
     }
 }

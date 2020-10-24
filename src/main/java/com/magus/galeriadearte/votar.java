@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -40,13 +42,52 @@ public class votar extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String codigoObra = request.getParameter("c");
-           String sql = "update votando set votos=votos+1 where codigoObra="+codigoObra;
+           String codigoObra = request.getParameter("c");
+           String usuario = request.getParameter("u");
+             String sql = "update votando set votos=votos+1 where codigoObra="+codigoObra;
+           String sql1 = "update clientes set  fechaUltimaVotacion = current_date() where usuario=\""+usuario+"\"";
+           String fecha="";
+           String busqueda = "select month(fechaUltimaVotacion),year(fechaUltimaVotacion) from clientes where usuario=\""+usuario+"\";";
+           String mesUltima="";
+           String añoUltima="";
+           DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM");
+           DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
+           
+           
+           //dia.format(LocalDateTime.now());
+           
+           
+           
+           
            myDb db = new myDb();
            Connection con = db.getcon();
            Statement stmt = con.createStatement();
-           stmt.executeUpdate(sql);
            
+           ResultSet resultadoConsulta1 = stmt.executeQuery(busqueda);
+           while (resultadoConsulta1.next()) {
+                
+                    mesUltima= resultadoConsulta1.getString(1);
+                   añoUltima=  resultadoConsulta1.getString(2);
+            }
+           if(!(fecha instanceof String))
+           {
+                stmt.executeUpdate(sql1);
+           
+                stmt.executeUpdate(sql);
+                out.print("Has votado correctamente");
+           }else
+           {
+               if(mes.format(LocalDateTime.now()).equals(mesUltima) && año.format(LocalDateTime.now()).equals(añoUltima))
+                   out.print("false");
+                 
+               else
+               {
+                    stmt.executeUpdate(sql1);
+                    stmt.executeUpdate(sql);
+                    out.print("Has votado correctamente");
+               }
+           }
+          
            
         } catch (SQLException ex) {
             Logger.getLogger(votar.class.getName()).log(Level.SEVERE, null, ex);
