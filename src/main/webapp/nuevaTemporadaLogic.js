@@ -1,45 +1,31 @@
 var xhttp = new XMLHttpRequest();
 
 
-xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-        alert(this.responseText);
-    }
-}
-
-window.onload = function () {
-    requestAutorInfo();
-};
-
-function requestAutorInfo() {
-    xhttp.open("GET", "nuevaObraServlet", true);
-    xhttp.send();
-}
-
 function validarDatos() {
     //recolectar info
     var nombre = document.getElementById("nombreText1").value;
     var descripcion = document.getElementById("descripcionText1").value;
     var fecha = document.querySelector('input[type="date"]').value;
-    var duracion = document.getElementById("duracionText1").value;
 
 
-    if (nombre == "" || descripcion == "" || duracion == "" || fecha == "") {
+    if (nombre == "" || descripcion == "" || fecha == "") {
         alert("Llene todos los campos...");
     } else {
-        guardarTemporada(nombre, descripcion, fecha, duracion);
+        guardarTemporada(nombre, fecha, descripcion);
+         alert("Llega aquí");
+
     }
 
 }
-function guardarTemporada(nombre, descripcion, fecha, duracion) {
-    var myInfo = nombre + ",," + descripcion + ",," + fecha + ",," + duracion;
+function guardarTemporada(nombre, fecha, descripcion) {
+    var myInfo = nombre + ",," + fecha + ",," + descripcion;
     alert(myInfo);
-    xhttp1.open("GET", "guardarTemporada?data=" + myInfo, true);
-    xhttp1.send();
+    xhttp.open("GET", "guardarTemporada?data=" + myInfo, true);
+    xhttp.send();
 }
 
 
-xhttp1.onreadystatechange = function () {
+xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200 && this.responseText !== "") {
         alert(this.responseText);
         alert("La temporada se guardo correctamenta");

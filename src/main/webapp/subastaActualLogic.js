@@ -9,7 +9,6 @@ var nombre=url.searchParams.get("n");;
 
 window.onload = function () {
     requestSubastaActual();
-
 };
 function votar()
 {

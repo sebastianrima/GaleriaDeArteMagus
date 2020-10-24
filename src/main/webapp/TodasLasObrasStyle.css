@@ -21,3 +21,52 @@ table{
     color: #380101;
     text-align: center;
 }
+div
+{
+    
+    display: inline-block;
+    width:40%;
+    heigh:40%;
+    font-style: italic;
+    font-size: 3em;
+    font-weight: bold;
+    font-family:  Serif ;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #FEF9E6;  
+    float: bottom;
+
+    margin-top: 50px;
+    padding-right: 20px;
+    padding-left: 20px;
+    -webkit-box-shadow: -15px -11px 5px 0px #97671C;
+    -moz-box-shadow: -15px -11px 5px 0px #97671C;
+    box-shadow: -15px -11px 5px 0px #97671C;
+
+    
+}
+table
+{
+    display: inline-block;
+}
+img
+{
+    width: 50%;
+    padding: 10px;  
+    color: white;
+    background-color: #380101;
+   cursor: pointer;
+   margin-left:  25%;
+   margin-top: 5%;
+}
+img:hover
+{
+    transform: scale(1.1);
+}
+h1,p
+{
+    width: 100%;
+    text-align: center;
+}
+

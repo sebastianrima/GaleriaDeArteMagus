@@ -2,6 +2,7 @@ var xhttp = new XMLHttpRequest();
 var url = new URL(window.location.href);
 var userName = url.searchParams.get("u");
 var nombre=url.searchParams.get("n");
+var codigo=url.searchParams.get("c");
 var cod1="";
 var cod2="";
 var cod3="";
@@ -58,12 +59,11 @@ alert(respuesta);
 }
 function requestSubastaActual()
 {
-    xhttp.open("GET", "AutorServlet", true);
+    xhttp.open("GET", "AutorServlet?data="+codigo, true);
     xhttp.send();
 }
 
 function llevaObra1(){
-    alert("pepe");
     location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + cod1;
 }
 function llevaObra2(){

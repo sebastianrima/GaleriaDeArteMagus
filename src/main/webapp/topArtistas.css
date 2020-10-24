@@ -76,8 +76,8 @@ img {
 }
 
 .numero {
-    position: relative;
-    top: 50%;
+    position: absolute;
+    margin-top: 4px;
     text-shadow: unset;
     position: absolute;
     width: fit-content;

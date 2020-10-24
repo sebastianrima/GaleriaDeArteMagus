@@ -14,7 +14,7 @@ function  goToObras()
     nombre = url.searchParams.get("n");
     user = url.searchParams.get("u");
 
-    top.window.location = "/main.html?u=" + user + "&n=" + nombre;
+    top.window.location = "/TodasLasObras.html?u=" + user + "&n=" + nombre;
 }
 function  goToMain()
 {

@@ -39,7 +39,8 @@ public class AutorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String sqlCode = "select * from artista,obras where artista.codigoArtista =1 and artista.codigoArtista= obras.codigoArtista;";
+            String data = request.getParameter("data");
+            String sqlCode = "select * from artista,obras where artista.codigoArtista ="+data+" and artista.codigoArtista= obras.codigoArtista;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();

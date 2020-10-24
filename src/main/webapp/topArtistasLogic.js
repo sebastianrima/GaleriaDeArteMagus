@@ -2,8 +2,7 @@ var xhttp = new XMLHttpRequest();
 
 
 window.onload = function () {
-    //requestTopArtistas();
-    mostrarDatos(respuesta)
+    requestTopArtistas();
 };
 
 xhttp.onreadystatechange = function () {
@@ -28,9 +27,8 @@ function mostrarDatos(respuesta) {
         var foto = Separados[i + 2];
         var descripcion = Separados[i + 3];
         var puntaje = Separados[i + 4];
-        var posicion = i + 1;
-        //AñadirDiv(nombreArtista, foto, descripcion, puntaje, posicion);
-
+        var posicion = i;
+        AñadirDiv(nombreArtista, foto, descripcion, puntaje, posicion);
     }
 
 

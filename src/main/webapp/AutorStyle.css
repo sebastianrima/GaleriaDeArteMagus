@@ -48,6 +48,7 @@ body
     text-align: left;
     z-index: -8;
     max-height: 10%;
+    max-width:70%;
 }
 .rect2{
     position: absolute;
@@ -138,7 +139,8 @@ body
     line-height: 1.1;
     color: #380101;
     text-align: Left;
-    max-width: 20%;
+    max-width: 50%;
+    
 }
 .Datos2{
     position: absolute;
@@ -151,6 +153,7 @@ body
     line-height: 1.1;
     color: #380101;
     text-align: Left;
+    max-width:50%;
 }
 .Datos3{
     position: absolute;
@@ -164,6 +167,7 @@ body
     line-height: 1.1;
     color: #380101;
     text-align: Left;
+    max-width:50%;
 }
 .rect8{
     position: absolute;

@@ -8,6 +8,7 @@ package com.magus.galeriadearte;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -20,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Nicolas
+ * @author Isaac
  */
-@WebServlet(name = "guardarTemporada", urlPatterns = {"/guardarTemporada"})
-public class guardarTemporada extends HttpServlet {
+@WebServlet(name = "ServletTodasLasObras", urlPatterns = {"/ServletTodasLasObras"})
+public class ServletTodasLasObras extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,19 +39,24 @@ public class guardarTemporada extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String data = request.getParameter("data");
-            String campos[] = data.split(",,");
-            ///prueba el codigo en un metodo de java normal
-            String sqlCode = "INSERT INTO temporada(nombre,fechaInicio,caracteristicas) VALUES(\"" + campos[0] + "\",\"" + campos[1] + "\",\"" + campos[2] + "\");";
+            
+            String sqlCode = "select nombre,imagen,precioBase,codigo from obras ;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
+            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+            String respuesta = "";
 
-            stmt.executeUpdate(sqlCode);
-            out.print(sqlCode);
+            while (resultadoConsulta1.next()) {
+                for (int i = 1; i < 5; i++) {
+                    respuesta += resultadoConsulta1.getString(i);
+                        respuesta +=",,";
+                }
+            }
             con.close();
-        }catch (SQLException ex) {
-            Logger.getLogger(guardarObra.class.getName()).log(Level.SEVERE, null, ex);
+            out.print(respuesta.replace("<br>", ""));
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletTodasLasObras.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

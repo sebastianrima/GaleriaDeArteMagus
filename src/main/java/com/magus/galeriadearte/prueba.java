@@ -27,49 +27,17 @@ import javax.servlet.http.HttpServletResponse;
 public class prueba {
     
     public static void main(String[] args) throws SQLException {
-            String codigoObra = "4";
-           String usuario = "ihy";
-             String sql = "update votando set votos=votos+1 where codigoObra="+codigoObra;
-           String sql1 = "update clientes set  fechaUltimaVotacion = current_date() where usuario=\""+usuario+"\"";
-           String fecha="";
-           String busqueda = "select month(fechaUltimaVotacion),year(fechaUltimaVotacion) from clientes where usuario=\""+usuario+"\";";
-           DateTimeFormatter mes = DateTimeFormatter.ofPattern("MM");
-           DateTimeFormatter año = DateTimeFormatter.ofPattern("yyyy");
-           DateTimeFormatter dia = DateTimeFormatter.ofPattern("dd");
-           String mesUltima="";
-           String añoUltima="";
-           
-           
-           
-           System.out.print(dia.format(LocalDateTime.now()));
-           
-           
-           
-           myDb db = new myDb();
-           Connection con = db.getcon();
-           Statement stmt = con.createStatement();
-           
-           ResultSet resultadoConsulta1 = stmt.executeQuery(busqueda);
-           while (resultadoConsulta1.next()) {
-                
-                   mesUltima= resultadoConsulta1.getString(1);
-                   añoUltima=  resultadoConsulta1.getString(2);
-            }
-           if(!(fecha instanceof String))
-           {
-                stmt.executeUpdate(sql1);
-           
-                stmt.executeUpdate(sql);
-                System.out.print("Has votado correctamente");
-           }else
-           {
-               if(mes.format(LocalDateTime.now()).equals(mesUltima) && año.format(LocalDateTime.now()).equals(añoUltima))
-                   System.out.print("false");
-                 
-               else
-               {
-                   System.out.print("votar");
-               }
-           }
+        //prueba no estoy seguro ahora si al servlet 
+            String data = "llega la primavera xd,,2020-11-10,,esta temporada se caracteriza por el uso de colores calidos como los amarillos y los sentimientos felices";
+            String campos[] = data.split(",,");
+            ///prueba el codigo en un metodo de java normal
+            String sqlCode = "INSERT INTO temporada(nombre,fechaInicio,caracteristicas) VALUES(\"" + campos[0] + "\",\"" + campos[1] + "\",\"" + campos[2] + "\");";
+            myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+
+            stmt.executeUpdate(sqlCode);
+            System.out.print(sqlCode);
+            con.close();
     }
 }

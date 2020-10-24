@@ -1,8 +1,11 @@
 var xhttp = new XMLHttpRequest();
-var respuesta="1,,https://generacionxbox.com/wp-content/uploads/2019/11/overwatch-2.jpg,,3,,5,,https://generacionxbox.com/wp-content/uploads/2019/11/overwatch-2.jpg,,6";
+var respuesta="";
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombreU=url.searchParams.get("n");
+var codigo=url.searchParams.get("c");
 window.onload = function() {
-    alert("2");
-    TraerObras(respuesta);
+    buscaDatos();
 };
 
 xhttp.onreadystatechange = function ()
@@ -14,22 +17,22 @@ xhttp.onreadystatechange = function ()
 }
 function TraerObras(respuesta){
     var Separados= respuesta.split(",,");
-    alert(Separados.length);
- for(var i=0; i<Separados.length;i+=3){
+    for(var i=0; i<Separados.length-1;i+=4){
     var NombreObra=Separados[i];
     var imgObra= Separados[i+1];
-    var PrecioSalida= Separados[i+2]
-    AñadirTabla(NombreObra,imgObra,PrecioSalida);
+    var PrecioSalida= Separados[i+2];
+    var codigo= Separados[i+3];
+    AñadirTabla(NombreObra,imgObra,PrecioSalida,codigo);
 }
  }
 
 function buscaDatos()
 {
-    xhttp.open("GET", "TodasLasObrasServlet", true);
+    xhttp.open("GET", "ServletTodasLasObras", true);
     xhttp.send();
 }
 
-function AñadirTabla(nombre, img, precio) {
+function AñadirTabla(nombre, img, precio,codigo) {
     // Obtener la referencia del elemento body
     var body = document.getElementsByTagName("body")[0];
    
@@ -42,33 +45,31 @@ function AñadirTabla(nombre, img, precio) {
       // Crea las hileras de la tabla
       var imagen = document.createElement("img"); 
                imagen.setAttribute("src", img); 
+               imagen.setAttribute("onClick","irAObra(\""+codigo+"\")");
                var div = document.createElement("div"); 
                div.appendChild(imagen);
                div.style.setProperty('height','10%');
-               div.className= "total";
-               div.id="total";
-               document.getElementById("total").style.setProperty('height','10%');
+               var contenedorTitulo = document.createElement("h1");
+               var titulo1 = document.createTextNode(nombre);
+               contenedorTitulo.appendChild(titulo1);
+               var contenedorPrecio = document.createElement("p");
+               var precio = document.createTextNode("Cop$"+precio);
+               contenedorPrecio.appendChild(precio);
+
+                
+                div.appendChild(contenedorTitulo);
+                div.appendChild(contenedorPrecio);
                document.body.appendChild(div);
-      var hilera = document.createElement("tr");
    
-      for (var j = 0; j < 1; j++) {
-        // Crea un elemento <td> y un nodo de texto, haz que el nodo de
-        // texto sea el contenido de <td>, ubica el elemento <td> al final
-        // de la hilera de la tabla
-        var celda = document.createElement("td");
-        var textoCelda = document.createTextNode(nombre+", "+precio);
-        celda.appendChild(textoCelda);
-        hilera.appendChild(celda);
-      }
    
-      // agrega la hilera al final de la tabla (al final del elemento tblbody)
-      tblBody.appendChild(hilera);
+     
     }
    
-    // posiciona el <tbody> debajo del elemento <table>
-    tabla.appendChild(tblBody);
-    // appends <table> into <body>
-    body.appendChild(tabla);
-    // modifica el atributo "border" de la tabla y lo fija a "2";
-    tabla.setAttribute("border", "0");
+  
+  }
+  
+  
+  function irAObra(codigo)
+  {
+      location = '/obraVista.html?u=' + userName + "&n=" + nombreU+ "&c=" + codigo;
   }

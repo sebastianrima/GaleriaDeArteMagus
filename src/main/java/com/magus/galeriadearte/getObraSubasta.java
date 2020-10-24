@@ -41,7 +41,8 @@ public class getObraSubasta extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             //getObraSubasta
-            String sqlCode = "select * from obras,artista where codigo =4 and artista.codigoArtista= obras.codigoArtista;";
+            String data = request.getParameter("data");
+            String sqlCode = "select * from obras,artista where codigo ="+data+" and artista.codigoArtista= obras.codigoArtista;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();

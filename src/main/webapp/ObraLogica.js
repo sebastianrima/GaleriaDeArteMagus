@@ -1,5 +1,9 @@
 var xhttp = new XMLHttpRequest();
-var myInfo;
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombre=url.searchParams.get("n");
+var myInfo= url.searchParams.get("c");
+var PrecioDeSalida;
 window.onload = function () {
     requestSubastaActual();
 };
@@ -21,23 +25,20 @@ function Inicio(respuesta)
     var imgObra = Separados[3];
     var imgAutor = Separados[19];
     var NombreAutor = Separados[17];
-    var PrecioDeSalida = Separados[2];
-    var PrecioSubasta = Separados[5];
+    PrecioDeSalida = Separados[2];
     var ValorActual = Separados[6];
-    var TiempoRestante = Separados[7];
 
     document.getElementById("NombreObra").innerHTML = NombreObra;
     document.getElementById("NombreAutor").innerHTML = NombreAutor;
     document.getElementById("imgObra").src = imgObra;
     document.getElementById("imgAutor").src = imgAutor;
-    document.getElementById("PrecioDeSalida").innerHTML = "Precio de salida: " + PrecioDeSalida;
-    document.getElementById("PrecioSubasta").innerHTML = "Precio de subasta: " + PrecioSubasta;
+    document.getElementById("PrecioDeSalida").innerHTML = "Precio de salida: COP$" + PrecioDeSalida;
+    document.getElementById("PrecioSubasta").innerHTML = "Precio de subasta: COP$" + PrecioDeSalida*0.8;
     document.getElementById("ValorActual").innerHTML = "Valor actual: " + ValorActual;
-    document.getElementById("TiempoRestante").innerHTML = TiempoRestante + "H restante";
 }
 
 function requestSubastaActual()
 {
-    xhttp.open("GET", "getObraSubasta", true);
+    xhttp.open("GET", "getObraSubasta?data="+myInfo, true);
     xhttp.send();
 }
