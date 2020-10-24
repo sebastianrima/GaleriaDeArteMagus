@@ -11,13 +11,12 @@ window.onload = function () {
 
 xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
-        mostrarDatos(this.responseText);    
+        mostrarDatos(this.responseText);
     }
 }
 
 xhttp1.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
-        alert(this.responseText);    
     }
 }
 
@@ -27,18 +26,16 @@ function requestTopArtistas() {
 }
 
 function mostrarDatos(respuesta) {
-    //alert(respuesta);
     var Separados = respuesta.split(",,");
     var contador = 0;
-    //alert(Separados.length);
     for (var i = 0; i < Separados.length - 1; i += 5) {
         var codigoArtista = Separados[i];
         var nombreArtista = Separados[i + 1];
         var foto = Separados[i + 2];
         var descripcion = Separados[i + 3];
         var puntaje = Separados[i + 4];
-        contador +=1;
-        
+        contador += 1;
+
         AñadirDiv(nombreArtista, foto, descripcion, puntaje, contador, codigoArtista);
     }
 }

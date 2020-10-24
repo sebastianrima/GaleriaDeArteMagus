@@ -6,7 +6,6 @@ xhttp.onreadystatechange = function ()
 {
     if (this.readyState === 4 && this.status === 200)
     {
-        alert(this.responseText);
         mostrarArtistas(this.responseText);
         fillAutorSelect(this.responseText);
     }
@@ -77,7 +76,6 @@ function guardarObra(nombre, precioBase, imagen, fecha, tipo, color, emocion, te
 
     var myInfo = nombre + ",," + precioBase + ",," + imagen + ",," + fecha + ",," +
             tipo + ",," + color + ",," + emocion + ",," + tematica + ",," + movimiento + ",," + descripcion + ",," + autor;
-    alert(myInfo);
     xhttp1.open("GET", "guardarObra?data=" + myInfo, true);
     xhttp1.send();
 }
@@ -87,12 +85,11 @@ xhttp1.onreadystatechange = function ()
 {
     if (this.readyState === 4 && this.status === 200 && this.responseText !== "")
     {
-        alert(this.responseText);
         alert("La obra se guardo correctamenta");
         goToMain();
     } else if (this.readyState === 4 && this.status === 200)
     {
-        alert("¡ha ocurrido un problema con el servidor por favor intente más tarde!");
+        alert("¡Ha ocurrido un problema con el servidor por favor intente más tarde!");
     }
 }
 

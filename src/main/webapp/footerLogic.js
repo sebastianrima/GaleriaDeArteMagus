@@ -5,7 +5,6 @@ function  goToNuevaObra()
     var url = new URL(top.window.location.href);
     nombre = url.searchParams.get("n");
     user = url.searchParams.get("u");
-
     top.window.location = "/nuevaObra.html?u=" + user + "&n=" + nombre;
 }
 function  goToObras()
@@ -13,7 +12,6 @@ function  goToObras()
     var url = new URL(top.window.location.href);
     nombre = url.searchParams.get("n");
     user = url.searchParams.get("u");
-
     top.window.location = "/TodasLasObras.html?u=" + user + "&n=" + nombre;
 }
 function  goToMain()

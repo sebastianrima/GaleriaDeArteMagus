@@ -19,7 +19,6 @@ function validarDatos() {
 }
 function guardarTemporada(nombre, fecha, descripcion) {
     var myInfo = nombre + ",," + fecha + ",," + descripcion;
-    alert(myInfo);
     xhttp.open("GET", "guardarTemporada?data=" + myInfo, true);
     xhttp.send();
 }
@@ -27,11 +26,10 @@ function guardarTemporada(nombre, fecha, descripcion) {
 
 xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200 && this.responseText !== "") {
-        alert(this.responseText);
-        alert("La temporada se guardo correctamenta");
+        alert("La temporada se guardó correctamente");
         goToMain();
     } else if (this.readyState === 4 && this.status === 200) {
-        alert("¡ha ocurrido un problema con el servidor por favor intente más tarde!");
+        alert("¡Ha ocurrido un problema con el servidor por favor intente más tarde!");
     }
 }
 

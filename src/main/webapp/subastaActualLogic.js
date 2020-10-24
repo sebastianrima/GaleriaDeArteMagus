@@ -112,7 +112,6 @@ function votar(codigo)
     {
         codigo = codigo3;
     }
-    alert(userName);
     xhttp1.open("GET", "votar?c="+codigo+ "&u=" + userName, true);
     xhttp1.send();
 }
@@ -123,10 +122,10 @@ xhttp1.onreadystatechange = function ()
     {
         if(this.responseText === "false")
         {
-            alert("ya has votado esta temporada porfavor espera a la siguiente");
+            alert("Ya has votado esta temporada por favor espera a la siguiente");
         }else
         {
-            alert(this.responseText);
+            alert("Gracias por votar");
         }
         
     }

@@ -1,11 +1,11 @@
 var xhttp = new XMLHttpRequest();
 var url = new URL(window.location.href);
 var userName = url.searchParams.get("u");
-var nombre=url.searchParams.get("n");
-var codigo=url.searchParams.get("c");
-var cod1="";
-var cod2="";
-var cod3="";
+var nombre = url.searchParams.get("n");
+var codigo = url.searchParams.get("c");
+var cod1 = "";
+var cod2 = "";
+var cod3 = "";
 window.onload = function () {
     myInfo = "";
     requestSubastaActual();
@@ -42,16 +42,15 @@ function Inicio(respuesta)
     var imgObra1 = Separados[10];
     var imgObra2 = Separados[28];
     var imgObra3 = Separados[46];
-    cod1= Separados[7];
-    cod2= Separados[25];
-    cod3= Separados[43];
+    cod1 = Separados[7];
+    cod2 = Separados[25];
+    cod3 = Separados[43];
 
-alert(respuesta);
     document.getElementById("NombreAutor").innerHTML = NombreAutor;
-    document.getElementById("FotoAutor").src= imgAutor;
-    document.getElementById("ImgObra1").src= imgObra1;
-    document.getElementById("ImgObra2").src= imgObra2;
-    document.getElementById("ImgObra3").src= imgObra3;
+    document.getElementById("FotoAutor").src = imgAutor;
+    document.getElementById("ImgObra1").src = imgObra1;
+    document.getElementById("ImgObra2").src = imgObra2;
+    document.getElementById("ImgObra3").src = imgObra3;
     document.getElementById("DatosAutor").innerHTML = "Nacionalidad: " + Nacionalidad + " <br/>Puntaje: " + Puntaje + " <br/>Descripción: " + Descripcion + "<br/>";
     document.getElementById("Datos1").innerHTML = "Nombre: " + NombreObra1 + " <br/>Precio: " + PrecioObra1 + " <br/>Fecha de creacion: " + FechaObra1 + " <br/>Descripción: " + Descripcion1;
     document.getElementById("Datos2").innerHTML = "Nombre: " + NombreObra2 + " <br/>Precio: " + PrecioObra2 + " <br/>Fecha de creacion: " + FechaObra2 + " <br/>Descripción: " + Descripcion2;
@@ -59,16 +58,16 @@ alert(respuesta);
 }
 function requestSubastaActual()
 {
-    xhttp.open("GET", "AutorServlet?data="+codigo, true);
+    xhttp.open("GET", "AutorServlet?data=" + codigo, true);
     xhttp.send();
 }
 
-function llevaObra1(){
-    location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + cod1;
+function llevaObra1() {
+    location = '/obraVista.html?u=' + userName + "&n=" + nombre + "&c=" + cod1;
 }
-function llevaObra2(){
-    location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + cod2;
+function llevaObra2() {
+    location = '/obraVista.html?u=' + userName + "&n=" + nombre + "&c=" + cod2;
 }
-function llevaObra3(){
-    location = '/obraVista.html?u=' + userName + "&n=" + nombre+ "&c=" + cod3;
+function llevaObra3() {
+    location = '/obraVista.html?u=' + userName + "&n=" + nombre + "&c=" + cod3;
 }

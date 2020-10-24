@@ -31,7 +31,7 @@ function estaComprada() {
         var btn = document.getElementById("botonComprarObra");
         btn.disabled = true;
         btn.style = "cursor: not-allowed;";
-       // btn.style = "transform: none;";
+        // btn.style = "transform: none;";
     }
 }
 
@@ -76,7 +76,7 @@ function mostrarDatos(respuesta) {
     document.getElementById("autorObra1").innerHTML = autorObra1;
 }
 
-function abrirAutor(){
+function abrirAutor() {
     location = '/Autor.html?u=' + user + "&n=" + nombre + "&c=" + codigoAutor;
 }
 function comprarObra()
@@ -88,7 +88,6 @@ function comprarObra()
 
 xhttp1.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
-        alert(this.responseText);
         document.getElementById("botonComprarObra").innerHTML = "Esta Obra está comprada";
         var btn = document.getElementById("botonComprarObra");
         btn.disabled = true;

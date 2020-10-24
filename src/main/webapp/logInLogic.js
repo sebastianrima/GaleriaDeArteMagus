@@ -7,7 +7,7 @@ xhttp.onreadystatechange = function ()
         location = '/main.html?u=' + userName + "&n=" + this.responseText;
     } else if (this.readyState === 4)
     {
-        alert("credenciales incorrectas");
+        alert("Credenciales incorrectas");
     }
 }
 function logIn()
@@ -22,7 +22,7 @@ function logIn()
         xhttp.send();
     } else
     {
-        alert("porfavor llena todos los campos");
+        alert("Por favor llena todos los campos");
     }
 
 }
