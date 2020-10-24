@@ -76,6 +76,8 @@ img {
 }
 
 .numero {
+    position: relative;
+    top: 50%;
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -85,8 +87,9 @@ img {
 }
 
 .fotoAutor {
-    margin-left: 13%;
-    margin-top: 2%;
+    position: relative;
+    margin-left: 10%;
+    top: 40%;
 }
 
 .vl {
@@ -94,7 +97,7 @@ img {
     margin-top: 4px;
     border-left: 4px solid #380101;
     margin-bottom: 4px;
-    height: 180px;
+    height: 145px;
     margin-left: 25%;
 }
 
@@ -119,7 +122,7 @@ img {
     text-align: center;
 }
 
-.obrasFav {
+.puntaje {
     text-shadow: unset;
     position: absolute;
     width: fit-content;
@@ -131,13 +134,6 @@ img {
     cursor: pointer;
 }
 
-#segundoDiv {
-    margin-top: 5%;
-}
-
-#tercerDiv {
-    margin-top: 5%;
-}
 
 #footer {
     margin-top: 10%;
