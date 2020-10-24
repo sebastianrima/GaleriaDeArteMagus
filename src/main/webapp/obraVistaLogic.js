@@ -4,7 +4,9 @@ var tipoMelo = "";
 var url = new URL(window.location.href);
 var codigo = url.searchParams.get("c");
 var user = url.searchParams.get("u");
+var nombre = url.searchParams.get("n");
 var codigoCliente;
+var codigoAutor;
 
 window.onload = function () {
     myInfo = "";
@@ -58,7 +60,7 @@ function mostrarDatos(respuesta) {
     var obraPicture = datosSeparados[9];
     var autorObra1 = datosSeparados[10];
     codigoCliente = datosSeparados[11];
-    var codigoAutor = datosSeparados[12];
+    codigoAutor = datosSeparados[12];
     estaComprada();
 
     document.getElementById("tituloObra1").innerHTML = tituloObra;
@@ -72,6 +74,10 @@ function mostrarDatos(respuesta) {
     document.getElementById("movimiento").innerHTML = movimiento;
     document.getElementById("obraPicture1").src = obraPicture;
     document.getElementById("autorObra1").innerHTML = autorObra1;
+}
+
+function abrirAutor(){
+    location = '/Autor.html?u=' + user + "&n=" + nombre + "&c=" + codigoAutor;
 }
 function comprarObra()
 {

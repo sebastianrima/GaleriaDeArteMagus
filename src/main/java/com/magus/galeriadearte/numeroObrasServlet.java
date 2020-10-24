@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Nicolas
+ * @author Isaac
  */
-@WebServlet(name = "topArtistasServlet", urlPatterns = {"/topArtistasServlet"})
-public class topArtistasServlet extends HttpServlet {
+@WebServlet(name = "numeroObrasServlet", urlPatterns = {"/numeroObrasServlet"})
+public class numeroObrasServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,24 +39,17 @@ public class topArtistasServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String sqlCode = "";
-            String sqlCode2 = "";
-            String codigo = null, autor = null, fotoAutor = null, obrasNum = null, descripcion = null, puntaje = null;
-            //sqlCode = "SELECT * FROM `artista` WHERE artista.puntaje";         Así estaba
-            sqlCode = "SELECT codigoArtista, nombre, urlFoto, descripcion, puntaje FROM `artista` ORDER BY puntaje DESC;";
+            String codigo = request.getParameter("c");
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
-            String respuesta = "";
-            while (resultadoConsulta1.next()) {
-                for (int i = 1; i < 6; i++) {
-                    respuesta += resultadoConsulta1.getString(i);
-                    respuesta += ",,";
-                }
+            String respuesta = null;
+            String sqlCode = "SELECT COUNT(*) FROM `obras` WHERE codigoArtista =" + codigo;
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            while (resultadoConsulta.next()) {
+                respuesta += resultadoConsulta.getString(0);
+                respuesta += ",,";
             }
-           
-
             con.close();
             out.println(respuesta);
         } catch (SQLException ex) {
@@ -65,7 +57,6 @@ public class topArtistasServlet extends HttpServlet {
         }
     }
 
-    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -81,7 +72,7 @@ public class topArtistasServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(topArtistasServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(numeroObrasServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -99,7 +90,7 @@ public class topArtistasServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(topArtistasServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(numeroObrasServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -39,8 +39,8 @@ public class ServletTodasLasObras extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            String sqlCode = "select nombre,imagen,precioBase,codigo from obras ;";
+            if(request.getParameter("p")==null){
+                String sqlCode = "select nombre,imagen,precioBase,codigo from obras ;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
@@ -55,6 +55,26 @@ public class ServletTodasLasObras extends HttpServlet {
             }
             con.close();
             out.print(respuesta.replace("<br>", ""));
+            }else{
+                String p= request.getParameter("p");
+                String t= request.getParameter("t");
+                String sqlCode = "select nombre,imagen,precioBase,codigo from obras where \""+p+"\"=\""+t+"\";";
+                myDb db = new myDb();
+            Connection con = db.getcon();
+            Statement stmt = con.createStatement();
+            ResultSet resultadoConsulta1 = stmt.executeQuery(sqlCode);
+            String respuesta="";
+                while (resultadoConsulta1.next()) {
+                for (int i = 1; i < 5; i++) {
+                    respuesta += resultadoConsulta1.getString(i);
+                        respuesta +=",,";
+                }
+            }
+                con.close();
+                out.print(respuesta.replace("<br>", ""));
+                
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ServletTodasLasObras.class.getName()).log(Level.SEVERE, null, ex);
         }

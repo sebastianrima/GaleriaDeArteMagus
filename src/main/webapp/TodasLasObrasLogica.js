@@ -73,3 +73,11 @@ function AñadirTabla(nombre, img, precio,codigo) {
   {
       location = '/obraVista.html?u=' + userName + "&n=" + nombreU+ "&c=" + codigo;
   }
+  
+  function Filtrado(){
+    var FiltradoPor = document.getElementById("FiltradoCombo");
+    var Parametro = FiltradoPor.options[FiltradoPor.selectedIndex].text;
+    var Texto = document.getElementById("TextoFiltrado").value;
+    xhttp.open("GET", "ServletTodasLasObras?p="+Parametro+"&t="+Texto, true);
+    xhttp.send();
+  }
