@@ -13,15 +13,13 @@
 
     <body>
         <iframe id="encabezado" src="navegador.html" frameBorder="0"></iframe>
-        <div id="filtrado" class="filtrado">
-            <p>Filtrar por: <select id="FiltradoCombo" name="obraTipo">
+            <p class="pepe">Filtrar por: <select id="FiltradoCombo" name="obraTipo">
                     <option value="" selected disabled hidden>Escoger</option>
-                    <option value="0">Color</option>
+                    <option value="0">color</option>
                     <option value="1">emocion</option>
-                    <option value="2">Tematica</option>
+                    <option value="2">tematica</option>
                     <option value="2">movimiento</option>
                 </select></p>
-                <p id="TextoFiltrado"><input type="text" id="nombreText1" name="nombre" size="40" placeholder="Escriba aquí"> </p>
-                <input type="button" id="botonFiltrado" onclick="Filtrado()" value="Filtrar">
-        </div>
+                <input type="text" id="TextoFiltrado" class="TextoFiltrado" size="40" placeholder="Escriba aquí">
+                <input type="button" id="botonFiltrado" class="botonFiltrado" onclick="Filtrado()" value="Filtrar">
     </body>

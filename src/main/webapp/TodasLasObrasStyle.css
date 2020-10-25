@@ -2,6 +2,37 @@ body
 {
     background-color: #fae8a0;
 }
+.botonFiltrado{
+    position: absolute;
+    top:32%;
+    left:58%;
+    font-size: 15px;
+    font-style: italic;
+    font-size: 1em;
+    font-weight: bold;
+    font-family:  Serif ;
+}
+.TextoFiltrado{
+    position: absolute;
+    top:32%;
+    left:30%;
+    font-size: 15px;
+    font-style: italic;
+    font-size: 1em;
+    font-weight: bold;
+    font-family:  Serif ;
+}
+.pepe{
+    position: absolute;
+    top:20%;
+    left:2%;
+    text-align: left;
+    font-style: italic;
+    font-size: 3em;
+    font-weight: bold;
+    font-family:  Serif ;
+}
+
 #encabezado
 {
     width: calc(100%);

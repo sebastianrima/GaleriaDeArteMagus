@@ -27,17 +27,17 @@ import javax.servlet.http.HttpServletResponse;
 public class prueba {
     
     public static void main(String[] args) throws SQLException {
-        //prueba no estoy seguro ahora si al servlet 
-            String data = "llega la primavera xd,,2020-11-10,,esta temporada se caracteriza por el uso de colores calidos como los amarillos y los sentimientos felices";
-            String campos[] = data.split(",,");
-            ///prueba el codigo en un metodo de java normal
-            String sqlCode = "INSERT INTO temporada(nombre,fechaInicio,caracteristicas) VALUES(\"" + campos[0] + "\",\"" + campos[1] + "\",\"" + campos[2] + "\");";
+        String codigo = "3";
+            String sqlCode = "SELECT COUNT(*) FROM `obras` WHERE codigoArtista =" + codigo;
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-
-            stmt.executeUpdate(sqlCode);
-            System.out.print(sqlCode);
+            String respuesta = "";
+            ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
+            while (resultadoConsulta.next()) {
+                respuesta += resultadoConsulta.getString(1);
+            }
             con.close();
+            System.out.print(respuesta);
     }
 }

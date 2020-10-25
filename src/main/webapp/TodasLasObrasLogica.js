@@ -3,9 +3,14 @@ var respuesta = "";
 var url = new URL(window.location.href);
 var userName = url.searchParams.get("u");
 var nombreU = url.searchParams.get("n");
-var codigo = url.searchParams.get("c");
+var Par = url.searchParams.get("p");
+var Tex = url.searchParams.get("t");
 window.onload = function () {
-    buscaDatos();
+    if(Par===null||Par===0){
+        buscaDatos();
+    }else{
+    FiltraDatos(Par,Tex);
+    }
 };
 
 xhttp.onreadystatechange = function ()
@@ -31,6 +36,11 @@ function buscaDatos()
     xhttp.open("GET", "ServletTodasLasObras", true);
     xhttp.send();
 }
+function FiltraDatos(p,t)
+{
+    xhttp.open("GET", "ServletTodasLasObras?p="+p+"&t="+t, true);
+    xhttp.send();
+}
 
 function AñadirTabla(nombre, img, precio, codigo) {
     // Obtener la referencia del elemento body
@@ -53,15 +63,13 @@ function AñadirTabla(nombre, img, precio, codigo) {
         var titulo1 = document.createTextNode(nombre);
         contenedorTitulo.appendChild(titulo1);
         var contenedorPrecio = document.createElement("p");
-        var precio = document.createTextNode("Cop$" + precio);
+        var precio = document.createTextNode("COP $" + precio);
         contenedorPrecio.appendChild(precio);
 
 
         div.appendChild(contenedorTitulo);
         div.appendChild(contenedorPrecio);
         document.body.appendChild(div);
-
-
 
     }
 
@@ -75,9 +83,9 @@ function irAObra(codigo)
 }
 
 function Filtrado() {
+    alert("1");
     var FiltradoPor = document.getElementById("FiltradoCombo");
     var Parametro = FiltradoPor.options[FiltradoPor.selectedIndex].text;
     var Texto = document.getElementById("TextoFiltrado").value;
-    xhttp.open("GET", "ServletTodasLasObras?p=" + Parametro + "&t=" + Texto, true);
-    xhttp.send();
+    location = '/TodasLasObras.html?u=' + userName + "&n=" + nombreU + "&p="+Parametro+"&t="+Texto;
 }

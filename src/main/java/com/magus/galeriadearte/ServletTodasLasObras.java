@@ -39,7 +39,7 @@ public class ServletTodasLasObras extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            if(request.getParameter("p")==null){
+            if(request.getParameter("p")==null||request.getParameter("p").equals("Escoger")){
                 String sqlCode = "select nombre,imagen,precioBase,codigo from obras ;";
             myDb db = new myDb();
             Connection con = db.getcon();
@@ -55,10 +55,10 @@ public class ServletTodasLasObras extends HttpServlet {
             }
             con.close();
             out.print(respuesta.replace("<br>", ""));
-            }else{
-                String p= request.getParameter("p");
+            }else{ 
+                String p= request.getParameter("p").toLowerCase(); 
                 String t= request.getParameter("t");
-                String sqlCode = "select nombre,imagen,precioBase,codigo from obras where \""+p+"\"=\""+t+"\";";
+                String sqlCode = "select nombre,imagen,precioBase,codigo from obras where upper("+p+")=upper(\""+t+"\");";
                 myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();

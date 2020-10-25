@@ -42,7 +42,9 @@ public class getObraSubasta extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             //getObraSubasta
             String data = request.getParameter("data");
-            String sqlCode = "select * from obras,artista where codigo ="+data+" and artista.codigoArtista= obras.codigoArtista;";
+            
+            
+            String sqlCode = "select * from obras,artista,votando where codigo ="+data+" and artista.codigoArtista= obras.codigoArtista and votando.codigoObra = obras.codigo;";
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
@@ -50,9 +52,9 @@ public class getObraSubasta extends HttpServlet {
             String respuesta = "";
 
             while (resultadoConsulta1.next()) {
-                for (int i = 1; i < 21; i++) {
+                for (int i = 1; i < 26; i++) {
                     respuesta += resultadoConsulta1.getString(i);
-                    if (i < 20) {
+                    if (i < 25) {
                         respuesta += ",,";
                     }
                 }

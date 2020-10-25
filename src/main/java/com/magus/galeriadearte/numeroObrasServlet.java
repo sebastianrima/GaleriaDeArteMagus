@@ -39,19 +39,18 @@ public class numeroObrasServlet extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String codigo = request.getParameter("c");
+            String codigo = request.getParameter("data");
+            String sqlCode = "SELECT COUNT(*) FROM `obras` WHERE codigoArtista =" + codigo;
             myDb db = new myDb();
             Connection con = db.getcon();
             Statement stmt = con.createStatement();
-            String respuesta = null;
-            String sqlCode = "SELECT COUNT(*) FROM `obras` WHERE codigoArtista =" + codigo;
+            String respuesta = "";
             ResultSet resultadoConsulta = stmt.executeQuery(sqlCode);
             while (resultadoConsulta.next()) {
-                respuesta += resultadoConsulta.getString(0);
-                respuesta += ",,";
+                respuesta += resultadoConsulta.getString(1);
             }
             con.close();
-            out.println(respuesta);
+            out.print(respuesta);
         } catch (SQLException ex) {
             Logger.getLogger(vistaObraServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
