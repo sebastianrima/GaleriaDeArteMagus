@@ -1,5 +1,6 @@
 var xhttp = new XMLHttpRequest();
 var xhttp1 = new XMLHttpRequest();
+var xhttp2 = new XMLHttpRequest();
 var codigo1;
 var codigo2;
 var codigo3;
@@ -95,7 +96,9 @@ function verObra( codigo)
 
 function goToSubastaActiva()
 {
-    location = '/Obra.html?u=' + userName + "&n=" + nombre;
+    xhttp2.open("GET", "obraMasVotada", true);
+    xhttp2.send();
+    
 }
 
 function votar(codigo)
@@ -129,4 +132,14 @@ xhttp1.onreadystatechange = function ()
         }
         
     }
+}
+xhttp2.onreadystatechange = function ()
+{
+    if (this.readyState === 4 && this.status === 200)
+    {
+        subActiv(this.responseText);
+    }
+}
+function subActiv(cod){
+    location = '/Obra.html?u=' + userName + "&n=" + nombre+"&c="+cod;
 }

@@ -59,6 +59,7 @@ function AñadirTabla(nombre, img, precio, codigo) {
         var div = document.createElement("div");
         div.appendChild(imagen);
         div.style.setProperty('height', '10%');
+        div.setAttribute('class', 'obra');
         var contenedorTitulo = document.createElement("h1");
         var titulo1 = document.createTextNode(nombre);
         contenedorTitulo.appendChild(titulo1);
@@ -69,7 +70,7 @@ function AñadirTabla(nombre, img, precio, codigo) {
 
         div.appendChild(contenedorTitulo);
         div.appendChild(contenedorPrecio);
-        document.body.appendChild(div);
+        document.getElementById("contenedor").appendChild(div);
 
     }
 
@@ -83,7 +84,6 @@ function irAObra(codigo)
 }
 
 function Filtrado() {
-    alert("1");
     var FiltradoPor = document.getElementById("FiltradoCombo");
     var Parametro = FiltradoPor.options[FiltradoPor.selectedIndex].text;
     var Texto = document.getElementById("TextoFiltrado").value;

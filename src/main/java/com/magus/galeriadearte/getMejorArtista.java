@@ -23,10 +23,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Nicolas
+ * @author Isaac
  */
-@WebServlet(name = "guardarTemporada", urlPatterns = {"/guardarTemporada"})
-public class guardarTemporada extends HttpServlet {
+@WebServlet(name = "getMejorArtista", urlPatterns = {"/getMejorArtista"})
+public class getMejorArtista extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,49 +41,23 @@ public class guardarTemporada extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String data = request.getParameter("data");
-            String color = request.getParameter("color");
-            String campos[] = data.split(",,");
-            ///prueba el codigo en un metodo de java normal
-            String sqlCode = "INSERT INTO temporada(nombre,fechaInicio,caracteristicas) VALUES(\"" + campos[0] + "\",\"" + campos[1] + "\",\"" + campos[2] + "\");";
+            /* TODO output your page here. You may use following sample code. */
+            String sql = "select codigoArtista  from artista order by puntaje desc limit 1;";
             myDb db = new myDb();
             Connection con = db.getcon();
-            Statement stmt = con.createStatement();
-
-            stmt.executeUpdate(sqlCode);
-            out.print(sqlCode);
-            con.close();
-            agreagarObras(color,campos[0],campos[1]);
-        } catch (SQLException ex) {
-            Logger.getLogger(guardarObra.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void agreagarObras(String color,String nombre,String fecha) {
-        String sql = "select * from Obras where color= \"" + color + "\";";
-        myDb db = new myDb();
-        Connection con = db.getcon();
-        Statement stmt;
-        try {
+            Statement stmt;
+    
             stmt = con.createStatement();
             ResultSet resultadoConsulta1 = stmt.executeQuery(sql);
-            List codigos = new ArrayList<>();
+            String codigo="";
             while (resultadoConsulta1.next()) {
-                codigos.add(resultadoConsulta1.getString(1));
+                codigo= resultadoConsulta1.getString(1);
             }
             
-            for (int i =0;i<codigos.size();i++) {
-                String sql1 = "INSERT INTO exhibicion(codigoDeLaObra,nombreTemporada,fechaInicio) VALUES(\""+codigos.get(i)+"\", '"+nombre+"', '"+fecha+"');";
-                stmt.executeUpdate(sql1);
-
-            }
-        
+            out.print(codigo);      
         } catch (SQLException ex) {
-            Logger.getLogger(guardarTemporada.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getMejorArtista.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

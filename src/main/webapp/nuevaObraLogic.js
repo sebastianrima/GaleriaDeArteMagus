@@ -1,6 +1,8 @@
 var xhttp = new XMLHttpRequest();
 var xhttp1 = new XMLHttpRequest();
-
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombre = url.searchParams.get("n");;
 
 xhttp.onreadystatechange = function ()
 {
@@ -94,8 +96,8 @@ xhttp1.onreadystatechange = function ()
 }
 
 function goToMain()
-{
-    top.window.location = "/main.html";
+{ 
+    top.window.location = "/main.html?u=" + userName + "&n=" + nombre;
 }
 
 

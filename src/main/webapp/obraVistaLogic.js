@@ -81,8 +81,14 @@ function abrirAutor() {
 }
 function comprarObra()
 {
-    xhttp1.open("GET", "comprarObra?c=" + codigo + "&u=" + user, true);
-    xhttp1.send();
+    if (user!= null)
+    {
+        xhttp1.open("GET", "comprarObra?c=" + codigo + "&u=" + user, true);
+    
+        xhttp1.send();
+        
+    }
+    
 }
 
 
@@ -90,6 +96,7 @@ xhttp1.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
         document.getElementById("botonComprarObra").innerHTML = "Esta Obra está comprada";
         var btn = document.getElementById("botonComprarObra");
+        alert("obra comprada con exito");
         btn.disabled = true;
         btn.style = "cursor: not-allowed;";
     }

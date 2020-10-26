@@ -1,5 +1,7 @@
 var xhttp = new XMLHttpRequest();
-
+var url = new URL(window.location.href);
+var userName = url.searchParams.get("u");
+var nombre = url.searchParams.get("n");;
 
 function validarDatos() {
     //recolectar info
@@ -12,14 +14,16 @@ function validarDatos() {
         alert("Llene todos los campos...");
     } else {
         guardarTemporada(nombre, fecha, descripcion);
-         alert("Llega aquí");
 
     }
 
 }
 function guardarTemporada(nombre, fecha, descripcion) {
     var myInfo = nombre + ",," + fecha + ",," + descripcion;
-    xhttp.open("GET", "guardarTemporada?data=" + myInfo, true);
+    var colorTexto = document.getElementById("colorSelect");
+    var color = colorTexto.options[colorTexto.selectedIndex].text;
+   
+    xhttp.open("GET", "guardarTemporada?data=" + myInfo+"&color="+color, true);
     xhttp.send();
 }
 
@@ -34,7 +38,7 @@ xhttp.onreadystatechange = function () {
 }
 
 function goToMain() {
-    top.window.location = "/main.html";
+    top.window.location = "/main.html?u=" + userName + "&n=" + nombre;
 }
 
 

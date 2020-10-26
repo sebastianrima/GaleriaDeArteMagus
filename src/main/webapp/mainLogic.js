@@ -1,4 +1,5 @@
 var xhttp = new XMLHttpRequest();
+var xhttp1 = new XMLHttpRequest();
 var url = new URL(window.location.href);
 var userName = url.searchParams.get("u");
 var nombre;
@@ -24,7 +25,7 @@ function requestTemporada()
 
 function mostrarDatos(respuesta)
 {
-    var datosSeparadosTemporada = respuesta.split("ñ");
+    var datosSeparadosTemporada = respuesta.split(",,");
     var titulo = datosSeparadosTemporada[0];
     var img1 = datosSeparadosTemporada[1];
     var img2 = datosSeparadosTemporada[2];
@@ -58,5 +59,17 @@ function goToTopArtista()
 }
 function goToArtistaTemporada()
 {
-    location = '/Autor.html?u=' + userName + "&n=" + nombre;
+    xhttp1.open("GET", "getMejorArtista", true);
+    xhttp1.send();
+}
+xhttp1.onreadystatechange = function ()
+{
+    if (this.readyState === 4 && this.status === 200)
+    {
+        location = '/Autor.html?u=' + userName + "&n=" + nombre+ "&c="+this.responseText;
+    }
+}
+function añadirTemporada()
+{
+    location = '/nuevaTemporada.html?u=' + userName + "&n=" + nombre;
 }

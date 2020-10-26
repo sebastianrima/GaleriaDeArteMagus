@@ -69,7 +69,7 @@ public class consegirInfoTemporadaActual extends HttpServlet {
 
             nombreTemporada = datos[1];
             textoTemporada = consegirDatosDeLaTemporada();
-            respuesta = nombreTemporada + "ñ" + urlimg1 + "ñ" + urlimg2 + "ñ" + textoTemporada;
+            respuesta = nombreTemporada + ",," + urlimg1 + ",," + urlimg2 + ",," + textoTemporada;
 
             out.println(respuesta);
             con.close();
