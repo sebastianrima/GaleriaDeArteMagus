@@ -40,7 +40,6 @@ public class vistaObraServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String codigo = request.getParameter("c");
-            String codigoArtista = "1";
             String sqlCode = "";
             String nombreArtista = "";
             String tituloObra = null, descripcion = null, codigoCliente = null, codigoAutor = null, precioBaseObra = null, fechaCreacion = null, tipo = null, color = null, emocion = null, tematica = null, movimiento = null, obraPicture = null, respuesta;
@@ -66,7 +65,7 @@ public class vistaObraServlet extends HttpServlet {
                 codigoCliente = resultadoConsulta.getString(12);
                 codigoAutor = resultadoConsulta.getString(13);
             }
-            ResultSet resultadoConsulta2 = stmt.executeQuery("SELECT nombre FROM artista WHERE artista.codigoArtista=" + codigoArtista);
+            ResultSet resultadoConsulta2 = stmt.executeQuery("SELECT nombre FROM artista WHERE artista.codigoArtista=" + codigoAutor);
 
             while (resultadoConsulta2.next()) {
                 nombreArtista = resultadoConsulta2.getString(1);

@@ -160,7 +160,7 @@ h2
 }
 #contenedorCaracteristicasTemporada
 {
-    max-width: 300px;
+    max-width: 600px;
     float: right;
     padding: 70px;
     padding-top: 50px;
@@ -206,4 +206,9 @@ a:hover
 .clickable:hover
 {
     transform: scale(1.1);
+}
+#imagen1,#imagen2
+{
+    width: 20%;
+    height: 15%;
 }
