@@ -63,13 +63,14 @@ img {
     margin-right: 3%;
 }
 
-#autorObra {
+#autorObra1 {
     position: absolute;
     text-align: justify;
     font-family: 'Playfair Display', serif;
     margin-top: 8%;
     margin-left: 80%;
     margin-right: 3%;
+    cursor: pointer;
 }
 
 #precioBaseObra {
@@ -84,6 +85,7 @@ img {
     margin-left: 36%;
     margin-right: 3%;
     margin-bottom: 20%;
+    
 }
 
 

@@ -74,7 +74,6 @@ function mostrarDatos(respuesta) {
     document.getElementById("movimiento").innerHTML = movimiento;
     document.getElementById("obraPicture1").src = obraPicture;
     document.getElementById("autorObra1").innerHTML = autorObra1;
-    alert(codigoAutor);
 }
 
 function abrirAutor() {
