@@ -143,3 +143,14 @@ body
 {
     width: 23%;
 }
+#BotonPuja{
+        font-family:  'Playfair Display', serif;
+
+    color: white;
+    cursor: pointer;
+    background-color: #380101;
+}
+#BotonPuja:hover
+{
+    transform: scale(1.1);
+}

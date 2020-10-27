@@ -180,6 +180,18 @@ h2
 p{
     font-family: 'Anton', sans-serif;
 }
+
+#nuevatemporada{
+     padding-top: 30px;
+    color: #380101;
+    font-family:  'Playfair Display', serif;
+    font-size: 20px;
+    cursor: pointer;
+    background: #fff3ae;
+    align-items: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
 #footer
 {
     width: 100%;

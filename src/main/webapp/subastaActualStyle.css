@@ -95,6 +95,18 @@ h1
     box-shadow: -15px -11px 5px 0px #97671C;
 }
 
+botonSub
+{
+margin-left: auto;
+margin-right: auto;
+
+}
+#contenedorBoton
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 
 

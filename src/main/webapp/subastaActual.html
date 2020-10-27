@@ -11,7 +11,12 @@
         <script src="subastaActualLogic.js"></script>
     </head>
     <body>
-        <iframe id="encabezado" src="navegador.html" frameBorder="0"></iframe>
+        <iframe id="encabezado" src="navegador.html" frameBorder="0"></iframe>\
+        <div id="contenedorBoton">
+                            <button class="clickable" id="botonSub" onclick="goToSubastaActiva()">Ver subasta en curso</button>
+
+        </div>
+
         <div id="subasta">
             <div id="espacioObra1" class="sombra">
                 <h1 id="titulo1">La monalisa</h1>
@@ -35,7 +40,6 @@
                 <button class="clickable" onclick="votar('codigo3')">Votar</button>
             </div>
         </div>
-        <button class="clickable" onclick="goToSubastaActiva()">Ver subasta en curso</button>
         <footer>
             <iframe id="footer" src="footer.html" frameBorder="0"></iframe>
         </footer> 
